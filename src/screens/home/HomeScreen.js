@@ -13,22 +13,22 @@ const HomeScreen = () => {
   const [screenTo, setScreenTo] = useState(-1);
 
   const data = [
-    { id_screen: '1', label: '1', descriptionL: '' },
-    { id_screen: '2', label: '2', descriptionL: '' },
-    { id_screen: '3', label: '3', descriptionL: '' },
-    { id_screen: '4', label: '4', descriptionL: '' },
-    { id_screen: '5', label: '5', descriptionL: '' },
-    { id_screen: '6', label: '6', descriptionL: '' },
-    { id_screen: '7', label: '7', descriptionL: '' },
-    { id_screen: '8', label: '8', descriptionL: '' },
-    { id_screen: '9', label: '9', descriptionL: '' },
-    { id_screen: '10', label: '10', descriptionL: '' },
-    { id_screen: '11', label: '11', descriptionL: '' },
-    { id_screen: '12', label: '12', descriptionL: '' },
-    { id_screen: '13', label: '13', descriptionL: '' },
-    { id_screen: '14', label: '14', descriptionL: '' },
-    { id_screen: '15', label: '15', descriptionL: '' },
-    { id_screen: '16', label: '16', descriptionL: '' }
+    { id_screen: '1', label: 'DDM', descriptionL: '' },
+    { id_screen: '2', label: 'STOPLINE', descriptionL: '' },
+    { id_screen: '3', label: 'WAREHOUSE', descriptionL: '' },
+    { id_screen: '4', label: 'EIP', descriptionL: '' },
+    { id_screen: '5', label: 'ADON', descriptionL: '' },
+    { id_screen: '6', label: 'iPARKING', descriptionL: '' },
+    { id_screen: '7', label: 'SENT KEYS', descriptionL: '' },
+    { id_screen: '8', label: 'SHOES', descriptionL: '' },
+    { id_screen: '9', label: 'DMS', descriptionL: '' },
+    { id_screen: '10', label: 'AUTO MAIL', descriptionL: '' },
+    { id_screen: '11', label: 'HR DEC', descriptionL: '' },
+    { id_screen: '12', label: 'TRACKING', descriptionL: '' },
+    { id_screen: '13', label: 'FLOOR', descriptionL: '' },
+    { id_screen: '14', label: 'TRUE LOVE', descriptionL: '' },
+    { id_screen: '15', label: 'FREE', descriptionL: '' },
+    { id_screen: '16', label: '', descriptionL: '' }
 
 
 
@@ -60,12 +60,14 @@ const HomeScreen = () => {
   }
 
   return (
-    <div className="w-screen h-screen bg-blue-400 grid grid-cols-4 gap-1 ">
+
+    <div className="w-screen h-screen bg-black grid p-0 m-0 grid-cols-4 gap-4 ">
       {list.map((item, index) => {
         return (
-          <button onClick={() => ChooseScreen(index)} className={`border h-full w-full   text-3xl font-bold `} key={'frame' + index}>
+          <button onClick={() => ChooseScreen(index)} className={` h-full w-full   font-bold rounded-lg`} key={'frame' + index}>
             <div
-              className={`${screenFrom == index ? 'ring ring-pink-500 -ring-offset-4 bg-gray-200' : ''}   drag bg-white w-full h-full flex justify-center items-center text-black`}>
+              className={`${screenFrom == index ? 'ring-4 ring-fuchsia-950 -ring-offset-4 bg-rose-950 text-white' : ' backdrop-blur-md bg-black text-yellow-400 '} 
+              text-2xl select-none text-ellipsis overflow-hidden   rounded-lg border-dashed  border-2 border-orange-400 drag w-full h-full flex justify-center items-center p-0 m-0 text-black`}>
               {item.label}
 
             </div>
