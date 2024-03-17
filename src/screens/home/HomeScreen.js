@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import socketIOClient from "socket.io-client";
 const HomeScreen = () => {
   const navigate = useNavigate();
-
+  const [socket, setSocket] = useState(null);
+  const socketRef = useRef();
   const navigateToDetail = (link) => {
     navigate(link); // Navigate to the "/detail" route
   };
@@ -29,11 +31,37 @@ const HomeScreen = () => {
     { id_screen: '14', label: 'TRUE LOVE', descriptionL: '' },
     { id_screen: '15', label: 'FREE', descriptionL: '' },
     { id_screen: '16', label: '', descriptionL: '' }
-
-
-
   ]
-  const [list, setList] = useState(data)
+
+  const [list, setList] = useState([])
+  useEffect(() => {
+
+    const getAPI = async () => {
+     await axios.post('http://localhost:8083/dashboard/getlistscreen',{list:list}).then(response => {
+        // console.log(response.data.data)
+        setList(response.data.data.data)
+      }).catch(() => {
+
+      })
+    }
+
+
+    getAPI()
+
+    socketRef.current = socketIOClient.connect('http://192.168.1.13:8083');
+    socketRef.current.on("message", (data) => {
+      console.log(data);
+    });
+    socketRef.current.on(`54314`, (data) => {
+      console.log('data', data)
+      setSocket(data);
+    });
+    return () => {
+      socketRef.current.disconnect();
+    };
+  }, [socket])
+
+
   const swapdrop = (idscreenTo) => {
     const copyListItems = [...list];
     const temp = copyListItems[screenFrom];
@@ -41,6 +69,8 @@ const HomeScreen = () => {
     copyListItems[idscreenTo] = temp;
     setScreenFrom(-1)
     setScreenTo(-1)
+    // getAPI(copyListItems);
+
     setList(copyListItems);
   };
   function ChooseScreen(index) {
@@ -66,7 +96,7 @@ const HomeScreen = () => {
         return (
           <button onClick={() => ChooseScreen(index)} className={` h-full w-full   font-bold rounded-lg`} key={'frame' + index}>
             <div
-              className={`${screenFrom == index ? 'ring-4 ring-fuchsia-950 -ring-offset-4 bg-rose-950 text-white' : ' backdrop-blur-md bg-black text-yellow-400 '} 
+              className={`${screenFrom == index ? 'ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-rose-950 text-white' : ' backdrop-blur-md bg-black text-yellow-400 '} 
               text-2xl select-none text-ellipsis overflow-hidden   rounded-lg border-dashed  border-2 border-orange-400 drag w-full h-full flex justify-center items-center p-0 m-0 text-black`}>
               {item.label}
 
