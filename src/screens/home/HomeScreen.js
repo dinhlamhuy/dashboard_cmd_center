@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import socketIOClient from "socket.io-client";
+import MenuBar from "../../component/MenuBar";
 const HomeScreen = () => {
   const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
@@ -33,11 +34,11 @@ const HomeScreen = () => {
     { id_screen: '16', label: '', descriptionL: '' }
   ]
 
-  const [list, setList] = useState([])
+  const [list, setList] = useState(data)
   useEffect(() => {
 
     const getAPI = async () => {
-     await axios.post('http://localhost:8083/dashboard/getlistscreen',{list:list}).then(response => {
+      await axios.post('http://localhost:8083/dashboard/getlistscreen', { list: list }).then(response => {
         // console.log(response.data.data)
         setList(response.data.data.data)
       }).catch(() => {
@@ -46,7 +47,7 @@ const HomeScreen = () => {
     }
 
 
-    getAPI()
+    // getAPI()
 
     socketRef.current = socketIOClient.connect('http://192.168.1.13:8083');
     socketRef.current.on("message", (data) => {
@@ -90,23 +91,29 @@ const HomeScreen = () => {
   }
 
   return (
+    <>
+      <MenuBar>
 
-    <div className="w-screen h-screen bg-black grid p-0 m-0 grid-cols-4 gap-4 ">
-      {list.map((item, index) => {
-        return (
-          <button onClick={() => ChooseScreen(index)} className={` h-full w-full   font-bold rounded-lg`} key={'frame' + index}>
-            <div
-              className={`${screenFrom == index ? 'ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-rose-950 text-white' : ' backdrop-blur-md bg-black text-yellow-400 '} 
-              text-2xl select-none text-ellipsis overflow-hidden   rounded-lg border-dashed  border-2 border-orange-400 drag w-full h-full flex justify-center items-center p-0 m-0 text-black`}>
-              {item.label}
 
-            </div>
-          </button>
+      
+        <div className="w-full h-screen bg-gray-900 grid p-0 m-0 grid-cols-4 gap-3 ">
+          {list.map((item, index) => {
+            return (
+              <button onClick={() => ChooseScreen(index)} className={` h-full w-full   font-bold rounded-lg`} key={'frame' + index}>
+                <div
+                  className={`${screenFrom == index ? 'ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-red-800 text-white' : ' backdrop-blur-md bg-gray-950 text-yellow-400 '} 
+              text-xl select-none text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400 drag w-full h-full flex justify-center items-center p-0 m-0 text-black`}>
+                  {item.label}
 
-        )
-      })}
+                </div>
+              </button>
 
-    </div>
+            )
+          })}
+
+        </div>
+      </MenuBar>
+    </>
   );
 };
 
