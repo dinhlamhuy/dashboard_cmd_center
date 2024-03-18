@@ -1,0 +1,14 @@
+@media (min-width: 870px) and (max-width: 1024px) {
+    .ReactModal__Content {
+      width: 60% !important;
+      max-width: 50% !important; 
+    }
+  }
+  
+  @media (max-width: 869px) {
+    .ReactModal__Content {
+      width: 90% !important;
+      max-width: 85% !important;  
+
+    }
+  }
