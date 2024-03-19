@@ -34,12 +34,12 @@ const MenuBar = ({ children }) => {
   return (
     <>
 
-     <div class="fixed top-4 z-50  left-0  ">
+     <div className="fixed top-4 z-50  left-0  ">
         <button onClick={() => {
           const newIsOpenSlide = !isOpenSlide;
           setIsOpenSlide(newIsOpenSlide);
           localStorage.setItem('isOpen', newIsOpenSlide.toString());
-        }} class="bg-blue-500 hover:bg-blue-600 hover:w-24 rounded-full text-white font-bold py-2 py-5 px-2 shadow-lg">
+        }} className="bg-blue-500 hover:bg-blue-600 hover:w-24 rounded-full text-white font-bold py-2 py-5 px-2 shadow-lg">
               X
         </button>
       </div>
