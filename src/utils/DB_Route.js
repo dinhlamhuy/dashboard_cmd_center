@@ -4,9 +4,13 @@ import HourlyOutPutByFloor from "../component/DB_HourlyOutPutByFloor/HourlyOutPu
 import StockFitting from "../component/DB_StockFitting/StockFitting";
 
 import { Route } from "react-router-dom";
+import HR from "../component/DB_HR/HR";
+import Data_KPI_Total from "../component/DB_Data_KPI_Total/Data_KPI_Total";
 export const DB_Route = {
   HourlyOutPutByFloor,
   StockFitting,
+  HR,
+  Data_KPI_Total
 };
 
 export const DB_Routers = () => {

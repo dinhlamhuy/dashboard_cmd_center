@@ -32,7 +32,7 @@ const MenuBar = ({ children, isActive }) => {
           }}
           className=" "
         >
-            <img src={logo} width={45} />
+          <img src={logo} width={45} style={{ opacity: "0.25" }} />
         </button>
       </div>
       <aside
@@ -133,9 +133,7 @@ const MenuBar = ({ children, isActive }) => {
       </aside>
 
       <div
-        className={`      ${
-          DarkMode ? "dark:bg-slate-800 bg-slate-800" : "bg-gray-200"
-        } `}
+        className={`  bg-black h-screen w-screen    `}
       >
         {/* <div className={` ${DarkMode ? "dark:bg-black bg-black" : "bg-white "}  p-4 border    border-gray-200   min-h-screen border-dashed rounded-lg  mt-14 pt-1 pb-12`}> */}
         {children}

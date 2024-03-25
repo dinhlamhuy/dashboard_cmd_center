@@ -1,0 +1,89 @@
+.Data_KPI_Total_container {
+    display: flex;
+    flex-direction: column;
+    /* background-image: url('../../assets/imag/Go_1366_30.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100dvh;
+}
+
+.Quality_Data_KPI_Total_container {
+    display: flex;
+    flex: 0.55;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.Quality_Data_KPI_Total_Chart_container {
+    display: flex;
+    flex: 0.45;
+    flex-direction: column;
+}
+
+.Quality_Data_KPI_Total_header {
+    display: flex;
+    flex: 0.1;
+    justify-content: center;
+    align-items: center;
+}
+
+.Quality_Data_KPI_Total_main {
+    flex: 0.9;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+.Data_KPI_Total_table {
+    border-collapse: collapse;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+}
+
+.Data_KPI_Total_table .table-header {
+    background: rgb(187, 99, 41);
+    font-weight: 500;
+}
+
+.Data_KPI_Total_table thead th {
+    border: 2px solid black;
+}
+
+.Data_KPI_Total_table tbody th {
+    border: 2px solid black;
+}
+
+.Data_KPI_Total_table th {
+    padding: 0px;
+}
+
+.Data_KPI_Total_table tbody td {
+    border-bottom: 2px solid transparent;
+}
+
+
+.hang {
+    background: rgb(4, 48, 68);
+    opacity: 0.8;
+    text-align: center;
+}
+
+
+
+.recharts-wrapper {
+    padding: 5px;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.blue {
+    color: #21A8EC;
+}

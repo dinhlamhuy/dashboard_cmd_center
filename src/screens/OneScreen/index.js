@@ -4,6 +4,8 @@ import MenuBar from "../../component/MenuBar";
 import { useParams } from "react-router-dom";
 import { BaseAPI, HostSocket } from "../../utils/baseApi";
 import { DB_Route } from "../../utils/DB_Route";
+import bgImg from "../../assets/image/background.jpg";
+
 import socketIOClient from "socket.io-client";
 const OneScreen = () => {
   const { id } = useParams();
@@ -44,11 +46,16 @@ const OneScreen = () => {
     Component = DB_Route[screenComponent.DB_url];
 
   }
-console.log(Component)
+// console.log(Component)
   return (
     <>
       <MenuBar isActive={"Screen_" + id}>
-        <div className="bg-black box-border flex-none  h-screen w-screen">
+        <div  style={{
+        background: `url(${bgImg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100%",
+      }}
+          className={` bg-black box-border flex-none  h-screen w-screen`}>
          {
             Component && ( <Component />)
          }

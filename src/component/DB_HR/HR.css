@@ -1,0 +1,86 @@
+.hinhnen {
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+    height: 100%;
+    /* background-image: url('../../assets/image/Go_1366_30.png'); */
+    font-size: 18px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.content-left {
+    background: #010C07;
+    padding: 3px;
+}
+
+.blue {
+    color: skyblue;
+    flex: 1;
+    margin-bottom: 3px;
+}
+
+.yellowFLex {
+    color: yellow;
+    flex: 1;
+    margin-bottom: 3px;
+    text-align: right;
+}
+
+.green {
+    color: #53C358;
+}
+
+.orange {
+    color: orange;
+}
+
+.grey {
+    background: #2F3231;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.table-left {
+    width: 80%;
+    z-index: 999;
+    font-size: 15px;
+}
+
+.table-left tbody tr td {
+    background: #1C3D4F;
+    opacity: 0.8;
+    padding: 3px;
+}
+
+.column1 {
+    width: 30%;
+}
+
+.column2 {
+    width: 10%;
+}
+
+.column3 {
+    width: 60%;
+    text-align: center;
+    position: relative;
+}
+
+.persent {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.table-right {
+    width: 80%;
+    z-index: 999;
+    font-size: 15px;
+}
