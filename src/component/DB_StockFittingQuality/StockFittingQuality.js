@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
 // import bgImg from "../../assets/image/background.jpg";
-const StockFitting = () => {
+const StockFittingQuality = () => {
   const [listData, setListData] = useState([
     {
         "Article": "",
@@ -352,4 +352,4 @@ const StockFitting = () => {
     </div>
   );
 };
-export default StockFitting;
+export default StockFittingQuality;

@@ -1,16 +1,18 @@
 /* eslint-disable import/no-anonymous-default-export */
 import CompScreen from "../screens/CompScreen";
 import HourlyOutPutByFloor from "../component/DB_HourlyOutPutByFloor/HourlyOutPutByFloor";
-import StockFitting from "../component/DB_StockFitting/StockFitting";
+import StockFittingQuality from "../component/DB_StockFittingQuality/StockFittingQuality";
 
 import { Route } from "react-router-dom";
 import HR from "../component/DB_HR/HR";
 import Data_KPI_Total from "../component/DB_Data_KPI_Total/Data_KPI_Total";
+import AssemblyQuality from "../component/DB_AssemblyQuality/AssemblyQuality";
 export const DB_Route = {
   HourlyOutPutByFloor,
-  StockFitting,
+  StockFittingQuality,
   HR,
-  Data_KPI_Total
+  Data_KPI_Total,
+  AssemblyQuality
 };
 
 export const DB_Routers = () => {

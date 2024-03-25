@@ -36,93 +36,93 @@ function HR() {
                     <div style={{ display: 'flex', width: '70%', gap: 50 }}>
 
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> D</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>2913</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 0</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>425</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>58</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
                         </div>
 
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> R2</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>769</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 0</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>174</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>16</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
                         </div>
 
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> R1</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>624</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 0</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>38</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>10</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
@@ -135,91 +135,91 @@ function HR() {
                     <div style={{ display: 'flex', gap: 50, flex: 1, paddingRight: '50px', marginBottom: '10px' }}>
                         <div style={{ flex: 0.75 }}></div>
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> C</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>1613</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 0</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>128</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>23</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> B</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>1470</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 2</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>191</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>26</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
                         </div>
                         <div style={{ flex: 1 }}>
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left' style={{ textAlign: 'center' }}> A</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Expected Attendence</div>
                                 <div className='yellowFLex content-left'>2980</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Leave Factory</div>
                                 <div className='yellowFLex content-left'> 0</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Absence</div>
                                 <div className='yellowFLex content-left'>284</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Maternity Leave</div>
                                 <div className='yellowFLex content-left'>79</div>
                             </div>
 
-                            <div className='flex'>
+                            <div className='flexDuy'>
                                 <div className='blue content-left'> Accident</div>
                                 <div className='yellowFLex content-left'>0</div>
                             </div>
