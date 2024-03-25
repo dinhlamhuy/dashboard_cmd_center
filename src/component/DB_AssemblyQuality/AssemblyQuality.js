@@ -477,7 +477,7 @@ const AssemblyQuality = () => {
             </thead>
             <tbody>
               {listData &&
-                listData.slice(0,23).map((item, index) => {
+                listData.slice(0,15).map((item, index) => {
                   return (
                     <tr
                       key={`list` + index}
