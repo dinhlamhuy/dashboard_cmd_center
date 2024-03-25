@@ -445,7 +445,7 @@ const AssemblyQuality = () => {
 
     const interval = setInterval(() => {
       rotateList();
-    }, 5000); // 15 seconds in milliseconds
+    }, 2000); // 15 seconds in milliseconds
 
     return () => clearInterval(interval); // Cleanup function to clear interval when component unmounts
   }, []);
@@ -477,7 +477,7 @@ const AssemblyQuality = () => {
             </thead>
             <tbody>
               {listData &&
-                listData.slice(0,15).map((item, index) => {
+                listData.map((item, index) => {
                   return (
                     <tr
                       key={`list` + index}

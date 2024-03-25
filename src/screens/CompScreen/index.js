@@ -9,7 +9,7 @@ const CompScreen = ({ Component }) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       }}
-          className={` bg-black box-border flex-none  h-screen w-screen`}
+          className={` bg-black box-border flex-none  h-screen w-screen overflow-hidden`}
         >
           <Component />
         </div>
