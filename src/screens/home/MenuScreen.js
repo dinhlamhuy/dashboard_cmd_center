@@ -7,7 +7,7 @@ import socketIOClient from "socket.io-client";
 import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
 import { BaseAPI, HostSocket } from "../../utils/baseApi";
-const DetailScreen = () => {
+const MenuScreen = () => {
   const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
   const socketRef = useRef();
@@ -158,7 +158,7 @@ const DetailScreen = () => {
 
   return (
     <>
-      <MenuBar isActive={'detail'}>
+      <MenuBar isActive={'menu'}>
         <div className="w-full h-screen bg-gray-900 grid p-0 m-0 grid-cols-4 gap-3 ">
           {list &&
             list.map((item, index) => {
@@ -286,4 +286,4 @@ const DetailScreen = () => {
   );
 };
 
-export default DetailScreen;
+export default MenuScreen;

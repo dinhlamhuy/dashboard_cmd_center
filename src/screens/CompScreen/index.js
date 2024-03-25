@@ -4,7 +4,11 @@ const CompScreen = ({ Component }) => {
   return (
     <>
       <MenuBar isActive={Component}>
-        <Component />
+        <div
+          className={` bg-black box-border flex-none  h-screen w-screen`}
+        >
+          <Component />
+        </div>
       </MenuBar>
     </>
   );

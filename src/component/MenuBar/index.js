@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
@@ -86,7 +87,7 @@ const MenuBar = ({ children, isActive }) => {
               </button>
             </li>
             <li
-              onClick={() => handleUrl("/detail", "detail")}
+              onClick={() => handleUrl("/menu", "menu")}
               className={`${
                 isActive === "detail"
                   ? DarkMode
