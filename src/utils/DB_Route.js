@@ -7,12 +7,14 @@ import { Route } from "react-router-dom";
 import HR from "../component/DB_HR/HR";
 import Data_KPI_Total from "../component/DB_Data_KPI_Total/Data_KPI_Total";
 import AssemblyQuality from "../component/DB_AssemblyQuality/AssemblyQuality";
+import CS3_Trial_Schedule from "../component/DB_CS3_Trial_Schedule/CS3_Trial_Schedule";
 export const DB_Route = {
   HourlyOutPutByFloor,
   StockFittingQuality,
   HR,
   Data_KPI_Total,
-  AssemblyQuality
+  AssemblyQuality,
+  CS3_Trial_Schedule
 };
 
 export const DB_Routers = () => {

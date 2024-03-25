@@ -206,34 +206,34 @@ const StockFittingQuality = () => {
   const [totalActualOutput, setTotalActualOutput] = useState(0);
   const [totalPPH, setTotalPPH] = useState(0);
   const [totalRFT, setTotalRFT] = useState(0);
-//   const getAPIcheck = async () => {
-//     await axios
-//       .get(BaseAPI + "/sfq/data_pph_all")
-//       .then((response) => {
-//         const data = response.data.data.sort((a, b) => {
-//           // Use localeCompare for string comparison to ensure correct sorting order
-//           return a.Line.localeCompare(b.Line);
-//         });
-//         const totalActualOutput = data.reduce((total, currentItem) => {
-//           return total + currentItem.Actual_Output;
-//         }, 0);
-//         const totalPPH = data.reduce((total, currentItem) => {
-//           return total + currentItem.PPH;
-//         }, 0);
-//         const totalRFT = data.reduce((total, currentItem) => {
-//           return total + currentItem.RFT;
-//         }, 0);
-//         const totalMP = data.reduce((total, currentItem) => {
-//           return total + currentItem.Operator;
-//         }, 0);
-//         setTotalActualOutput(totalActualOutput);
-//         setTotalMP(totalMP);
-//         setTotalPPH(totalPPH / data.length || 0);
-//         setTotalRFT(totalRFT / data.length || 0);
-//         setListData(data);
-//       })
-//       .catch(() => {});
-//   };
+  const getAPIcheck = async () => {
+    await axios
+      .get(BaseAPI + "/sfq/data_pph_all")
+      .then((response) => {
+        const data = response.data.data.sort((a, b) => {
+          // Use localeCompare for string comparison to ensure correct sorting order
+          return a.Line.localeCompare(b.Line);
+        });
+        const totalActualOutput = data.reduce((total, currentItem) => {
+          return total + currentItem.Actual_Output;
+        }, 0);
+        const totalPPH = data.reduce((total, currentItem) => {
+          return total + currentItem.PPH;
+        }, 0);
+        const totalRFT = data.reduce((total, currentItem) => {
+          return total + currentItem.RFT;
+        }, 0);
+        const totalMP = data.reduce((total, currentItem) => {
+          return total + currentItem.Operator;
+        }, 0);
+        setTotalActualOutput(totalActualOutput);
+        setTotalMP(totalMP);
+        setTotalPPH(totalPPH / data.length || 0);
+        setTotalRFT(totalRFT / data.length || 0);
+        setListData(data);
+      })
+      .catch(() => {});
+  };
   useEffect(() => {
     // getAPIcheck();
 
