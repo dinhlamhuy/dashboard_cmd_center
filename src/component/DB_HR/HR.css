@@ -8,7 +8,7 @@
     font-size: 18px;
 }
 
-.flex {
+.flexDuy {
     display: flex;
     justify-content: space-between;
     gap: 3px;

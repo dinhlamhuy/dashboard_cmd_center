@@ -142,7 +142,7 @@ const MenuScreen = () => {
         id_screen: idScreen + 1,
       })
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setListComponent(response.data.data.data);
       })
       .catch(() => {});
@@ -285,7 +285,7 @@ const MenuScreen = () => {
                         ? "ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-red-800 text-white"
                         : " backdrop-blur-md bg-gray-950 text-yellow-400 "
                     } 
-              text-xl select-none text-center w-full text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400  w-full h-full flex  items-center `}
+              text-xl select-none  w-full flex justify-center items-center text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400  w-full h-full   items-center `}
                   >
                     {item.DB_name}
                   </div>
