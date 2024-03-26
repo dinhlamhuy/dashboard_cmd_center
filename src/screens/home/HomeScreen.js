@@ -28,44 +28,44 @@ const HomeScreen = () => {
 
   const [list, setList] = useState([
     {
-        "DB_id": "10",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "HOURLY OUTPUT BY MODEL",
+        "DB_name": null,
         "Screen_id": "1",
         "Screen_position": "1"
-    },
-    {
-        "DB_id": "2",
-        "DB_url": null,
-        "DB_name": "IPARKING",
-        "Screen_id": "2",
-        "Screen_position": "2"
     },
     {
         "DB_id": "14",
         "DB_url": "StockFittingQuality",
         "DB_name": "STOCK FITTING QUALITY",
+        "Screen_id": "2",
+        "Screen_position": "2"
+    },
+    {
+        "DB_id": null,
+        "DB_url": null,
+        "DB_name": null,
         "Screen_id": "3",
         "Screen_position": "3"
     },
     {
-        "DB_id": "16",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "HOURLY OUTPUT BY FLOOR 2",
+        "DB_name": null,
         "Screen_id": "4",
         "Screen_position": "4"
     },
     {
-        "DB_id": "13",
-        "DB_url": null,
-        "DB_name": "BÁO CÁO SẢN LƯỢNG",
+        "DB_id": "7",
+        "DB_url": "AssemblyQuality",
+        "DB_name": "ASSEMBLY QUALITY",
         "Screen_id": "5",
         "Screen_position": "5"
     },
     {
-        "DB_id": "5",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "AVAILABILITY KPI",
+        "DB_name": null,
         "Screen_id": "6",
         "Screen_position": "6"
     },
@@ -77,16 +77,16 @@ const HomeScreen = () => {
         "Screen_position": "7"
     },
     {
-        "DB_id": "7",
-        "DB_url": "AssemblyQuality",
-        "DB_name": "ASSEMBLY QUALITY",
+        "DB_id": null,
+        "DB_url": null,
+        "DB_name": null,
         "Screen_id": "8",
         "Screen_position": "8"
     },
     {
-        "DB_id": "11",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "HOURLY OUTPUT BY MODEL 2",
+        "DB_name": null,
         "Screen_id": "9",
         "Screen_position": "9"
     },
@@ -98,44 +98,44 @@ const HomeScreen = () => {
         "Screen_position": "10"
     },
     {
-        "DB_id": "8",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "STOCK FITTING ",
+        "DB_name": null,
         "Screen_id": "11",
         "Screen_position": "11"
+    },
+    {
+        "DB_id": "3",
+        "DB_url": "CS3_Trial_Schedule",
+        "DB_name": "CS3 TRIAL SCHEDULE",
+        "Screen_id": "12",
+        "Screen_position": "12"
+    },
+    {
+        "DB_id": null,
+        "DB_url": null,
+        "DB_name": null,
+        "Screen_id": "13",
+        "Screen_position": "13"
+    },
+    {
+        "DB_id": null,
+        "DB_url": null,
+        "DB_name": null,
+        "Screen_id": "14",
+        "Screen_position": "14"
     },
     {
         "DB_id": "4",
         "DB_url": "Data_KPI_Total",
         "DB_name": "QUALITY KPI TOTAL",
-        "Screen_id": "12",
-        "Screen_position": "12"
-    },
-    {
-        "DB_id": "3",
-        "DB_url": null,
-        "DB_name": "CSS TRIAL SCHEDULE",
-        "Screen_id": "13",
-        "Screen_position": "13"
-    },
-    {
-        "DB_id": "1",
-        "DB_url": null,
-        "DB_name": "ISTOCKING",
-        "Screen_id": "14",
-        "Screen_position": "14"
-    },
-    {
-        "DB_id": "9",
-        "DB_url": null,
-        "DB_name": "PROD KPI DASHBOARD",
         "Screen_id": "15",
         "Screen_position": "15"
     },
     {
-        "DB_id": "6",
+        "DB_id": null,
         "DB_url": null,
-        "DB_name": "SHIPPING SCHEDULE",
+        "DB_name": null,
         "Screen_id": "16",
         "Screen_position": "16"
     }
