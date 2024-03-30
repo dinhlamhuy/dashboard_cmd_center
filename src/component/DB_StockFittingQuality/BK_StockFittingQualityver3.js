@@ -523,16 +523,15 @@ const StockFittingQuality = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="   relative h-screen px-2 pt-3 pt-10 overflow-auto">
-      <div className="text-white text-6xl text-center font-bold pb-3">Stock Fitting Quality</div>
-      <div className="flex justify-center items-center mt-6">
-      <div className=" w-[100%] relative grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-8 gap-4 mt-7 ">
+    <div className="   relative h-screen px-2 pt-3">
+      <div className="text-white text-6xl text-center font-bold pb-2">RFT</div>
+      <div className=" w-[100%] relative grid grid-cols-8 gap-4 mt-7 ">
         {listData
           .sort((a, b) => a.Line - b.Line)
           .map((item) => {
             return (
               <div
-                className={` max-w-xs pie-chart-container mt-3  ${
+                className={` max-w-xs pie-chart-container mt-3 ${
                   item.Count_Add > 0
                     ? "border-red-400 bg-red-950/90"
                     : "border-blue-900 bg-blue-950/30 "
@@ -541,20 +540,9 @@ const StockFittingQuality = () => {
                 {/* <ResponsiveContainer> */}
                   <PieChart
                     width={300}
-                    height={250}
+                    height={200}
                     className="-ml-15 rounded-xl absolute  px-0 "
                   >
-                       <text
-                      fontSize={"26px"}
-                      fontWeight={"bold"}
-                      fill="white"
-                      x={cx+12}
-                      y={cy -160 }
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                    >
-                      {item.RFT ? item.RFT +'%':  '0%'}
-                    </text>
                     <Pie
                       label={renderCustomizedLabel}
                       dataKey="value"
@@ -582,70 +570,15 @@ const StockFittingQuality = () => {
                     </Pie>
                     {needle(item.RFT, cx, cy, iR, oR, "#74eb34")}
                     <text
-                      fontSize={"15px"}
-                      fontWeight={"bold"}
-                      fill="white"
-                      x={cx-130}
-                      y={cy + 45}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                    >
-                      Lean: 
-                    </text>
-                    <text
                       fontSize={"26px"}
                       fontWeight={"bold"}
                       fill="white"
-                      x={cx-50}
-                      y={cy + 45}
-                      textAnchor="start"
+                      x={cx}
+                      y={cy + 60}
+                      textAnchor="middle"
                       dominantBaseline="middle"
                     >
                       {item.Line}
-                    </text>
-                    <text
-                      fontSize={"15px"}
-                      fontWeight={"bold"}
-                      fill="yellow"
-                      x={cx-110 }
-                      y={cy + 80}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                    >
-                     ShoeName:
-                    </text>
-                    <text
-                      fontSize={"20px"}
-                      fontWeight={"bold"}
-                      fill="yellow"
-                      x={cx -50}
-                      y={cy + 80}
-                      textAnchor="start"
-                      dominantBaseline="middle"
-                    >
-                    {item.ShoeName}
-                    </text>
-                    <text
-                      fontSize={"15px"}
-                      fontWeight={"bold"}
-                      fill="#dc2f02"
-                      x={cx-150}
-                      y={cy + 115}
-                      textAnchor="start"
-                      dominantBaseline="middle"
-                    >
-                     StopLine:
-                    </text>
-                    <text
-                      fontSize={"26px"}
-                      fontWeight={"bold"}
-                      fill="#dc2f02"
-                      x={cx -50}
-                      y={cy + 115}
-                      textAnchor="start"
-                      dominantBaseline="middle"
-                    >
-                    {item.Count_Add !== 0 ? item.Count_Add : ''}
                     </text>
                   </PieChart>
                 {/* </ResponsiveContainer> */}
@@ -653,9 +586,7 @@ const StockFittingQuality = () => {
             );
           })}
       </div>
-
-      </div>
-      {/* <div className="  pl-4 pr-6  h-1/3 w-full">
+      <div className="  pl-4 pr-6  h-1/3 w-full">
         <div className="text-white text-center font-bold text-6xl pb-6">
           Stock Fitting Quality
         </div>
@@ -769,7 +700,7 @@ const StockFittingQuality = () => {
             </tr>
           </tbody>
         </table>
-      </div> */}
+      </div>
     </div>
   );
 };

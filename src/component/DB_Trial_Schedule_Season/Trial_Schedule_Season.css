@@ -47,6 +47,7 @@
 
 #table {
     text-align: center;
+    width: 100%; 
 
 }
 
@@ -62,8 +63,9 @@
 }
 
 #table td {
-    padding: 0.5vw;
-    font-size: .8vw;
+    padding: 0.2vw;
+    font-size: .85vw;
+    font-weight: 500;
 }
 
 #body-content {

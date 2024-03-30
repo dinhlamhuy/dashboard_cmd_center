@@ -1,8 +1,27 @@
 import './Data_KPI_Total.css'
 import { BarChart, Bar,  XAxis, YAxis, CartesianGrid,   ResponsiveContainer } from 'recharts';
 import { dataKIP } from './Data';
+import { useEffect, useState } from "react";
+import { BaseAPI } from "../../utils/baseApi";
+import axios from "axios";
 
 const Data_KPI_Total = () => {
+
+
+    const [data, setData] = useState(dataKIP)
+    const getAPIcheck = async () => {
+        await axios
+          .get(BaseAPI + "/datakpi/get_data_kpi")
+          .then((response) => {
+            // console.log(response.data.data);
+            setData(response.data.data);
+          })
+          .catch(() => {});
+      };
+  useEffect(() => {
+    getAPIcheck();
+  }, []);
+ 
 
     return (
         <div className="Data_KPI_Total_container">
@@ -11,7 +30,7 @@ const Data_KPI_Total = () => {
                     <span className='title'>QUALITY KPI TOTAL 2024</span>
                 </div>
                 <div className='Quality_Data_KPI_Total_main'>
-                    <table className='Data_KPI_Total_table'>
+                    <table className='Data_KPI_Total_table table-fixed'>
                         <thead>
                             <tr>
                                 <th className='table-header' style={{ background: 'rgb(0,168,236)' }}>ID</th>
@@ -32,23 +51,23 @@ const Data_KPI_Total = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataKIP.map((item, index) => (
+                            {data && data.map((item, index) => (
                                 <tr className='hang' key={index}>
                                     <td className='blue'>{item.ID_QKPI}</td>
-                                    <td className='yellow'>{item.KPI}</td>
-                                    <td className='text-blue-200'>{item.Jan.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Feb.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Mar.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Apr.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.May.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Jun.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Jul.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Aug.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Sep.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Oct.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Nov.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Dec.toLocaleString('vi-VN')}</td>
-                                    <td className='text-blue-200'>{item.Total.toLocaleString('vi-VN')}</td>
+                                    <td className='yellow text-left pl-10 pr-0 w-64 '>{item.KPI}</td>
+                                    <td className='text-blue-200 '>{item.Jan.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Feb.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Mar.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Apr.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.May.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Jun.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Jul.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Aug.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Sep.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Oct.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Nov.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Dec.toLocaleString('vi-VN')}</td>
+                                    <td className='text-blue-200 '>{item.Total.toLocaleString('vi-VN')}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -61,7 +80,7 @@ const Data_KPI_Total = () => {
                 </div>
                 <div className='Quality_Data_KPI_Total_main'>
                     <ResponsiveContainer width="100%" height="100%" >
-                        <BarChart data={dataKIP}>
+                        <BarChart data={data}>
                             <XAxis
                                 dataKey="ID_QKPI"
                                 tick={{ fill: '#21A8EC' }}

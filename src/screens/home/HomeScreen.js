@@ -200,7 +200,7 @@ const HomeScreen = () => {
                     left: `calc(${colIndex} / 4 * 100%)`,
                     top: `calc(${rowIndex - 1} / 4 * 100%)`,
                   }}
-                  className={` h-1/4 w-1/4 absolute  overflow-hidden`}
+                  className={` h-1/4 w-1/4 bg-gray-950 absolute  overflow-hidden`}
                 >
                   <button
                     onClick={() => navigateToDetail(url)}
