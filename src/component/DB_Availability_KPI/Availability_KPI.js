@@ -17,7 +17,7 @@ const Availability_KPI = () => {
   return (
     
       <div clasName="relative h-screen px-2 pt-3 pt-10">
-       <div className="text-white text-6xl text-center font-bold my-12  pb-3">AVAILABILITY KPI 2024</div>
+       <div className="text-white text-6xl text-center font-bold pt-12  pb-3">AVAILABILITY KPI 2024</div>
         <div className="px-24 mt-10 flex justify-center items-center ">
             <table className="table table-fixed w-[80%]">
                 <thead>

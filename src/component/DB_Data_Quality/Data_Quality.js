@@ -14,15 +14,15 @@ const Data_Quality = () => {
     getAPIcheck();
   }, []);
   return (
-    <div clasName="relative h-screen bg-black px-2 pt-3 pt-8 ">
-      <div className="text-white text-6xl text-center font-bold my-8  pb-3">
+    <div clasName="relative h-screen bg-black px-2  ">
+      <div className="text-white text-6xl text-center font-bold  ">
         DATA QUANLITY 2024
       </div>
       <div className="px-24 mt-10 flex justify-center items-center">
         <table className="table table-fixed w-[90%]  border-separate border-spacing-1">
           <thead>
             <tr className="backdrop-brightness-125 bg-teal-900/40 ">
-              <td className="py-5 px-2  text-lg w-48  text-blue-300 text-left ">
+              <td className="py-3 px-2  text-lg w-48  text-blue-300 text-left ">
                 Item
                 <br />
                 Months
@@ -43,7 +43,7 @@ const Data_Quality = () => {
           </thead>
           <tbody>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 RFT (%)
               </th>
               {listData &&
@@ -56,7 +56,7 @@ const Data_Quality = () => {
                 })}
             </tr>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 Repacking rate (%)
               </th>
               {listData &&
@@ -69,7 +69,7 @@ const Data_Quality = () => {
                 })}
             </tr>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 B Grade (prs)
               </th>
               {listData &&
@@ -82,7 +82,7 @@ const Data_Quality = () => {
                 })}
             </tr>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 C Grade (prs)
               </th>
               {listData &&
@@ -95,7 +95,7 @@ const Data_Quality = () => {
                 })}
             </tr>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 WHC (300$/1M)
               </th>
               {listData &&
@@ -108,7 +108,7 @@ const Data_Quality = () => {
                 })}
             </tr>
             <tr className="">
-              <th className="py-5 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
+              <th className="py-3 backdrop-brightness-125 bg-teal-900/40 px-2 font-bold text-lg text-left text-blue-300">
                 DR (YTD DR/1M PV)
               </th>
               {listData &&

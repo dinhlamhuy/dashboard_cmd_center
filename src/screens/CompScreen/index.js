@@ -3,7 +3,7 @@ import bgImg from "../../assets/image/background.jpg";
 const CompScreen = ({ Component }) => {
   return (
     <>
-      <MenuBar isActive={Component}>
+      <MenuBar isActive={'Com'+Component}>
         <div    style={{
         background: `url(${bgImg})`,
         backgroundRepeat: "no-repeat",

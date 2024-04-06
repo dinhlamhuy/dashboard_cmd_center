@@ -10,3 +10,6 @@
     border-radius: 12px;
 
   }
+  tfoot {
+    display: table-header-group;
+  }

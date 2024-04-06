@@ -12,6 +12,9 @@ import Availability_KPI from "../component/DB_Availability_KPI/Availability_KPI"
 import Stock_Fitting from "../component/DB_Stock_Fitting/Stock_Fitting";
 import Data_Product_Type from "../component/DB_Data_Product_Type/Data_Product_Type";
 import Data_Quality from "../component/DB_Data_Quality/Data_Quality";
+import StockFittingQuality_China from "../component/DB_StockFittingQuality/StockFittingQuality_VerChina";
+import StockFittingQuality_VerEn from "../component/DB_StockFittingQuality/StockFittingQuanlity_VerEn";
+import Shipping_Shedule from "../component/DB_Shipping_Shedule/Shipping_Shedule";
 export const DB_Route = {
   HourlyOutPutByFloor,
   StockFittingQuality,
@@ -19,8 +22,13 @@ export const DB_Route = {
   Data_KPI_Total,
   AssemblyQuality,
   Trial_Schedule_Season,
-  Availability_KPI,Stock_Fitting, Data_Product_Type, Data_Quality
-
+  Availability_KPI,
+  Stock_Fitting,
+  Data_Product_Type,
+  Data_Quality,
+  StockFittingQuality_China,
+  StockFittingQuality_VerEn,
+  Shipping_Shedule,
 };
 
 export const DB_Routers = () => {

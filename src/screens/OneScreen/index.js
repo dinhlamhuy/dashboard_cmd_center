@@ -49,7 +49,7 @@ const OneScreen = () => {
 // console.log(Component)
   return (
     <>
-      <MenuBar isActive={"Screen_" + id}>
+      <MenuBar isActive={"Screen" + id}>
         <div  style={{
         background: `url(${bgImg})`,
         backgroundRepeat: "no-repeat",

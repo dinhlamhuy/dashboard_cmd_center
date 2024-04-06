@@ -21,7 +21,7 @@ const CS3_Trial_Schedule = () => {
   return (
     <>
       <div id="container">
-        <div id="title" className="pb-10">
+        <div id="title" className="">
           <p>CS3 TRIAL SCHEDULE</p>
           <ul id="content-under-title">
             <li>Season Start: {data && data[0] && data[0].season_start}</li>

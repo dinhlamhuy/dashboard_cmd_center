@@ -1,25 +1,48 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/image/logo.png";
 import { FaListAlt } from "react-icons/fa";
-
+import { LuMonitorDot } from "react-icons/lu";
 import { ImHome } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 // import { IoIosMoon } from "react-icons/io";
-
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { PiMonitor } from "react-icons/pi";
 import "./index.css";
 
 const MenuBar = ({ children, isActive }) => {
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (isActive.includes("Screen")) {
+      setIsOpenScreen(true);
+    }
+  }, [isActive]);
   const handleUrl = (link, name) => {
     navigate(link);
   };
 
   const [isOpenSlide, setIsOpenSlide] = useState(false);
-  const [DarkMode, setDarkMode] = useState(false);
+  const [isOpenScreen, setIsOpenScreen] = useState(false);
+
+
+  const screens = [];
+  for (let i = 1; i <= 16; i++) {
+    screens.push(
+      <li
+        key={i}
+        onClick={() => handleUrl('/screen/'+i)}
+        className={`${
+          isActive === "Screen"+i? 'activeMenuDark' :"  hover:text-white hover:bg-gray-800  "}   flex cursor-pointer hover:bg-gray-700 p-3`}
+      >
+        <PiMonitor className="text-2xl" />
+        <span className={`${i >= 10 ? '-ml-4' : '-ml-3.5'}  text-[8px] mt-1`}>{i}</span>
+        &emsp;&emsp; Màn hình {i}
+      </li>
+    );
+  }
+
 
   return (
     <>
@@ -46,41 +69,25 @@ const MenuBar = ({ children, isActive }) => {
         aria-label="Sidebar"
       >
         <div
-          className={`h-full px-3 grid gap-4 content-between border-t-4 border-t-teal-700  ${
-            DarkMode
-              ? "dark:text-white dark:bg-black bg-black text-white"
-              : "text-white bg-teal-950"
-          } pb-4 overflow-y-auto  `}
+          className={`h-full px-3 grid gap-4 content-between   text-white bg-teal-950 pb-4 overflow-y-auto  `}
         >
           <ul className="space-y-2 font-medium  ">
             <li
               onClick={() => handleUrl("/", "home")}
               className={`${
                 isActive === "home"
-                  ? DarkMode
-                    ? "activeMenuDark "
-                    : "activeMenuLight "
-                  : `${
-                      DarkMode
-                        ? "  hover:text-white hover:bg-gray-800  text-white"
-                        : " text-white hover:bg-gray-100"
-                    }`
-              } cursor-pointer `}
+                  ? "activeMenuDark "
+                    
+                  : "  hover:text-white hover:bg-gray-800  text-white"} cursor-pointer `}
             >
               <button
-                className={`flex ${
-                  DarkMode ? "dark:text-white  text-white " : " "
-                }  items-center p-2  rounded-lg group`}
+                className={`flex text-white  items-center p-2  rounded-lg group`}
               >
                 <ImHome
-                  className={`text-2xl ${
-                    DarkMode ? " text-white" : "text-white"
-                  } `}
+                  className={`text-2xl text-white`}
                 />
                 <span
-                  className={`  ${
-                    DarkMode ? "text-white" : "text-white"
-                  }  pr-2 flex-1 ms-3 whitespace-nowrap `}
+                  className={`  text-white pr-2 flex-1 ms-3 whitespace-nowrap `}
                 >
                   Màn hình chính
                 </span>
@@ -89,56 +96,67 @@ const MenuBar = ({ children, isActive }) => {
             <li
               onClick={() => handleUrl("/menu", "menu")}
               className={`${
-                isActive === "detail"
-                  ? DarkMode
-                    ? "activeMenuDark "
-                    : "activeMenuLight "
-                  : `${
-                      DarkMode
-                        ? "  hover:text-white hover:bg-gray-800  "
-                        : " text-white hover:bg-gray-100"
-                    }`
-              } cursor-pointer `}
+                isActive === "menu"? 'activeMenuDark' :"  hover:text-white hover:bg-gray-800  "} cursor-pointer `}
             >
               <button className=" flex items-center p-2 rounded-lg  group">
                 <FaListAlt
-                  className={`text-2xl ${
-                    DarkMode ? "dark:text-white text-white" : "text-white"
-                  } `}
+                  className={`text-2xl text-white `}
                 />
                 <span
-                  className={`  ${
-                    DarkMode ? "text-white" : "text-white"
-                  }  pr-2 flex-1 ms-3 whitespace-nowrap `}
+                  className={` text-white  pr-2 flex-1 ms-3 whitespace-nowrap `}
                 >
                   Sắp xếp
                 </span>
               </button>
             </li>
 
-            {/* <li className={`${DarkMode ? "hover:bg-gray-800  text-white" : "hover:bg-gray-200  text-white"} cursor-pointer  `} >
+            <li
+              className={`${
+                isActive.includes("Screen")
+                  ? "activeMenuDark "
+                  : "  hover:text-white hover:bg-gray-800  "
+              } cursor-pointer `}
+            >
               <button
-
-                className={` flex items-center py-2 px-1.5
-                 rounded-lg    group`}
+                onClick={() => setIsOpenScreen(!isOpenScreen)}
+                className="  w-full flex items-center p-2 rounded-lg  group"
               >
-                <MdLanguage className={`text-3xl ${DarkMode ? "dark:text-white text-white" : "text-white"} `} />
-                <span className={`  ${DarkMode ? "dark:text-white text-white" : "text-white"} group-hover:text-gray-900 pr-2 flex-1 ms-3 whitespace-nowrap `}>
-                  ngon
+                <LuMonitorDot
+                  className={`text-2xl text-white`}
+                />
+
+                <span
+                  className={`   text-white w-full pr-2 flex justify-between ms-3 whitespace-nowrap `}
+                >
+                  <span className=" ">Màn hình</span>
+                  {isOpenScreen ? (
+                    <IoIosArrowUp className="text-2xl" />
+                  ) : (
+                    <IoIosArrowDown className="text-2xl" />
+                  )}
                 </span>
               </button>
-            </li> */}
+              <div
+                className={`transition ease-in-out delay-150 bg-gray-950 ${
+                   isOpenScreen ? "" : "hidden" 
+                } `}
+              >
+                <ul className="ml-4 py-3 gap-3 flex flex-col h-72 overflow-auto">
+
+                   
+                {screens}
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
       </aside>
 
-      <div
-        className={`  bg-black h-screen w-screen    `}
-      >
-        {/* <div className={` ${DarkMode ? "dark:bg-black bg-black" : "bg-white "}  p-4 border    border-gray-200   min-h-screen border-dashed rounded-lg  mt-14 pt-1 pb-12`}> */}
+      <div className={`  bg-black h-screen w-screen    `}>
+       
         {children}
-        {/* </div> */}
-        {/* <p className={` ${DarkMode ? "text-teal-200" : "text-teal-900"} mt-2`}> Copyright 2023 &copy; IT-SW LHG Huii & Shan</p> */}
+        
+       
       </div>
     </>
   );

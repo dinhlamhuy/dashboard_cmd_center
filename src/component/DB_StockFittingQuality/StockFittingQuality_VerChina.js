@@ -26,7 +26,7 @@ const oR = 100;
 
 const needle = (value, cx, cy, iR, oR, color) => {
   const ang = 180 - 180 * (value / 100);
-  const length = (iR + 2 * oR) / 2.5;
+  const length = (iR + 2 * oR) / 2.1;
   const sin = Math.sin(-RADIAN * ang);
   const cos = Math.cos(-RADIAN * ang);
   const r = 7;
@@ -57,7 +57,7 @@ const renderCustomizedLabel = ({
   label,
   index,
 }) => {
-  const radius = (innerRadius + (outerRadius - innerRadius)) * 0.55;
+  const radius = (innerRadius + (outerRadius - innerRadius)) * 0.57;
   const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
   const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
 
@@ -76,7 +76,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const StockFittingQuality = () => {
+const StockFittingQuality_China = () => {
   // const [listData, setListData] = useState([
   //   {
   //     Article: "",
@@ -524,15 +524,15 @@ const StockFittingQuality = () => {
   }, []);
   return (
     <div className="   relative h-screen px-2 pt-3 pt-10 overflow-auto">
-      <div className="text-white text-6xl text-center font-bold pb-3">Stock Fitting Quality</div>
+      <div className="text-white text-6xl text-center font-bold pb-3">底加工品質</div>
       <div className="flex justify-center items-center mt-6">
-      <div className=" w-[100%] relative grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-8 gap-4 mt-7 ">
+      <div className=" w-[100%] relative grid  grid-cols-4 md:grid-cols-5 lg:grid-cols-8  xl:grid-cols-8 gap-4 mt-7 ">
         {listData
           .sort((a, b) => a.Line - b.Line)
           .map((item) => {
             return (
               <div
-                className={` max-w-xs pie-chart-container mt-3  ${
+                className={` h-[110px] sm:h-[155px] md:h-[160px] lg:h-[140px] xl:h-[160px] xl:h-[180px] 2xl:h-[220px] max-w-xs pie-chart-container mt-3  ${
                   item.Count_Add > 0
                     ? "border-red-400 bg-red-950/90"
                     : "border-blue-900 bg-blue-950/30 "
@@ -541,15 +541,15 @@ const StockFittingQuality = () => {
                 {/* <ResponsiveContainer> */}
                   <PieChart
                     width={300}
-                    height={180}
-                    className="-ml-15 rounded-xl absolute  px-0 "
+                    height={190} 
+                    className="  rounded-xl absolute mx-0 ms:mx-2 md:mx-2 lg:mx-1 xl:mx-2  2xl:mx-7 "
                   >
                        <text
-                      fontSize={"26px"}
+                      fontSize={"30px"}
                       fontWeight={"bold"}
                       fill="white"
-                      x={cx+12}
-                      y={cy -160 }
+                      x={cx+10}
+                      y={cy -215 }
                       textAnchor="middle"
                       dominantBaseline="middle"
                     >
@@ -561,13 +561,13 @@ const StockFittingQuality = () => {
                       startAngle={180}
                       endAngle={0}
                       data={data}
-                      cx={cx}
+                      cx={cx-5}
                       // label={{position:'top'}}
                       labelLine={false}
-                      cy={cy}
+                      cy={cy-40}
                       paddingAngle={2}
-                      innerRadius={90}
-                      outerRadius={135}
+                      innerRadius={105}
+                      outerRadius={150}
                       fill="#8884d8"
                       stroke="none"
                       labelPosition="bottom" // Màu sắc của điểm kết thúc của đường line
@@ -580,68 +580,68 @@ const StockFittingQuality = () => {
                         />
                       ))}
                     </Pie>
-                    {needle(item.RFT, cx, cy, iR, oR, "#74eb34")}
+                    {needle(item.RFT, cx-5, cy-40, iR, oR, "#74eb34")}
                     <text
-                      fontSize={"15px"}
+                      fontSize={"23px"}
                       fontWeight={"bold"}
                       fill="white"
-                      x={cx-130}
-                      y={cy + 45}
-                      textAnchor="middle"
+                      x={cx-150}
+                      y={cy+10}
+                      textAnchor="start"
                       dominantBaseline="middle"
                     >
-                      Lean: 
+                      線別: 
                     </text>
                     <text
-                      fontSize={"26px"}
+                      fontSize={"30px"}
                       fontWeight={"bold"}
                       fill="white"
-                      x={cx-50}
-                      y={cy + 45}
+                      x={cx-60}
+                      y={cy+10}
                       textAnchor="start"
                       dominantBaseline="middle"
                     >
                       {item.Line}
                     </text>
                     <text
-                      fontSize={"15px"}
+                      fontSize={"23px"}
                       fontWeight={"bold"}
                       fill="yellow"
-                      x={cx-110 }
-                      y={cy + 80}
-                      textAnchor="middle"
+                      x={cx-150 }
+                      y={cy + 50}
+                      textAnchor="start"
                       dominantBaseline="middle"
                     >
-                     ShoeName:
+                     鞋型:
                     </text>
                     <text
-                      fontSize={"20px"}
+                      fontSize={"21px"}
                       fontWeight={"bold"}
                       fill="yellow"
-                      x={cx -50}
-                      y={cy + 80}
+                      x={cx -60}
+                      y={cy + 50}
                       textAnchor="start"
                       dominantBaseline="middle"
                     >
                     {item.ShoeName}
                     </text>
                     <text
-                      fontSize={"15px"}
+                      fontSize={"23px"}
                       fontWeight={"bold"}
                       fill="#dc2f02"
                       x={cx-150}
-                      y={cy + 115}
+                      y={cy + 90}
                       textAnchor="start"
                       dominantBaseline="middle"
                     >
-                     StopLine:
+                     停線:
                     </text>
                     <text
                       fontSize={"26px"}
                       fontWeight={"bold"}
                       fill="#dc2f02"
-                      x={cx -50}
-                      y={cy + 115}
+                      x={cx -60}
+                      y={cy + 90}
                       textAnchor="start"
                       dominantBaseline="middle"
                     >
@@ -773,4 +773,4 @@ const StockFittingQuality = () => {
     </div>
   );
 };
-export default StockFittingQuality;
+export default StockFittingQuality_China;

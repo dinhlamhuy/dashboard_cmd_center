@@ -12,16 +12,16 @@ function HourlyOutPutByFloor() {
     await axios
       .get(BaseAPI + "/bcsl/sanluongline")
       .then((response) => {
-        // console.log(response.data.data);
+        // console.table(response.data.data);
         setListHourlyOutput(response.data.data);
       })
       .catch(() => {});
   };
-  // useEffect(() => {
-  //   // getAPIcheck();
+  useEffect(() => {
+    getAPIcheck();
     
 
-  // }, []);
+  }, []);
   // useEffect(() => {
   //   const rotateList = () => {
   //       setListHourlyOutput(prevList => {
