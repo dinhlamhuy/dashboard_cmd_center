@@ -60,8 +60,8 @@ const Shipping_Shedule = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen px-4 ">
-      <div>
+    <div className="w-full h-full px-4 ">
+      <div className="w-full flex justify-center">
         <p className="text-4xl text-white text-center font-bold ">
           Shipping Shedule
         </p>
