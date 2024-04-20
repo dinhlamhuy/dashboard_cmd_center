@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 // import {Data} from './data'
 const Data_Quality = () => {
   const [listData, setListData] = useState([]);
+  const {t}= useTranslation();
   const getAPIcheck = async () => {
     await axios.get(BaseAPI + "/quanlity/get_data_quality").then((response) => {
       setListData(response.data.data);

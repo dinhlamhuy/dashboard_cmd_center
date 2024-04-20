@@ -15,6 +15,7 @@ import Data_Quality from "../component/DB_Data_Quality/Data_Quality";
 import StockFittingQuality_China from "../component/DB_StockFittingQuality/StockFittingQuality_VerChina";
 import StockFittingQuality_VerEn from "../component/DB_StockFittingQuality/StockFittingQuanlity_VerEn";
 import Shipping_Shedule from "../component/DB_Shipping_Shedule/Shipping_Shedule";
+import HourlyOutPutByModel from "../component/DB_HourlyOutPutByModel/HourlyOutPutByModel";
 export const DB_Route = {
   HourlyOutPutByFloor,
   StockFittingQuality,
@@ -29,6 +30,7 @@ export const DB_Route = {
   StockFittingQuality_China,
   StockFittingQuality_VerEn,
   Shipping_Shedule,
+  HourlyOutPutByModel
 };
 
 export const DB_Routers = () => {

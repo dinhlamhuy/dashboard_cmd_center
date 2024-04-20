@@ -17,10 +17,11 @@
 .content-left {
     background: #010C07;
     padding: 3px;
+    padding-right: 9px;
 }
 
 .blue {
-    color: skyblue;
+    color: rgb(152, 201, 221);
     flex: 1;
     margin-bottom: 3px;
 }
@@ -33,7 +34,7 @@
 }
 
 .green {
-    color: #53C358;
+    color: #37dc3f;
 }
 
 .orange {
@@ -43,7 +44,7 @@
 .grey {
     background: #2F3231;
     opacity: 0.8;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .table-left {
@@ -57,8 +58,19 @@
     opacity: 0.8;
     padding: 3px;
 }
-
-.column1 {
+.table-detail {
+    width: 99%;
+    z-index: 1;
+    font-size: 15px;
+    
+    justify-content: center;
+}
+.table-detail tbody tr td {
+    background: #1C3D4F;
+    opacity: 0.8;
+    padding: 3px;
+}
+/* .column1 {
     width: 30%;
 }
 
@@ -70,13 +82,17 @@
     width: 60%;
     text-align: center;
     position: relative;
+} */
+.column3 {
+    text-align: center;
+    position: relative;
 }
-
 .persent {
     position: absolute;
     display: flex;
     width: 100%;
     justify-content: center;
+    color:rgb(190, 246, 6)
 }
 
 .table-right {
@@ -84,3 +100,26 @@
     z-index: 1;
     font-size: 15px;
 }
+
+
+
+@media (min-width: 870px) and (max-width: 1024px) {
+    .ReactModal__Content {
+      width: 60% !important;
+      max-width: 50% !important; 
+    }
+  }
+  
+  @media (max-width: 869px) {
+    .ReactModal__Content {
+      width: 90% !important;
+      max-width: 85% !important;  
+
+    }
+  }
+
+
+ .ReactModal__Overlay, .ReactModal__Overlay ReactModal__Overlay--after-open {
+    position: absolute !important;
+    z-index:99 !important;
+ } 

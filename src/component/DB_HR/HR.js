@@ -1,418 +1,573 @@
-
-import hinhnen from '../../assets/image/New_LHG.png';
+import { useEffect, useState } from "react";
+import hinhnen from "../../assets/image/New_LHG.png";
 // import hinhhr from '../../assets/img/MES_Sky_blue.png'
-import './HR.css'
+import "./HR.css";
+import { BaseAPI } from "../../utils/baseApi";
+import axios from "axios";
+import ModalBuilding from "./modalBuilding";
+import { useTranslation } from "react-i18next";
 function HR() {
-    return (
-        <div className='hinhnen'>
-            <img
-                src={hinhnen}
-                alt=""
-                style={{
-                    height: '87%',
-                    width: '100%',
-                    position: 'absolute',
-                    marginTop: '40px'
-                }}
-            />
-            <div style={{
-                display: 'flex',
-                flex: 1,
-                flexDirection: 'column'
-            }}>
-                <div style={{
-                    flex: 1,
-                    overflow: 'hidden',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'flex-end'
-                }}>
+  const [openModal, setOpenModal] = useState(false);
+  const [data, setData] = useState({});
+  const [detail, setDetail] = useState([]);
+  const [detailName, setDetailname] = useState("");
+  const {t} = useTranslation();
+  const openModalBuilding = (building) => {
+    getAPIdetail(building);
+    setDetailname(building);
+    setOpenModal(true);
+  };
 
-                    <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                        <span style={{ fontSize: '70px', color: 'white', fontWeight: 'bold', textAlign: 'center', marginTop: '-10px', }}>HR</span>
-                    </div>
-                </div>
-                <div style={{ flex: 2, display: 'flex', justifyContent: 'center', zIndex: 999, opacity: 0.7, marginBottom: '10px' }}>
-                    <div style={{ display: 'flex', width: '70%', gap: 50 }}>
+  const getAPIcheck = async () => {
+    await axios
+      .get(BaseAPI + "/Get_Data_HR")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch(() => {});
+  };
+  const getAPIdetail = async (building) => {
+    await axios
+      .get(BaseAPI + "/Get_Data_HR_Detail?building=" + building)
+      .then((response) => {
+        setDetail(response.data.Manpower_Build_Lean_Detail);
+      })
+      .catch(() => {});
+  };
+  useEffect(() => {
+    getAPIcheck();
+  }, []);
 
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> D</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>2913</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 0</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>425</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>58</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-                        </div>
-
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> R2</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>769</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 0</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>174</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>16</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-                        </div>
-
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> R1</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>624</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 0</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>38</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>10</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div style={{ flex: 2.5, display: 'flex', justifyContent: 'center', zIndex: 999, opacity: 0.9 }}>
-                    <div style={{ display: 'flex', gap: 50, flex: 1, paddingRight: '50px', marginBottom: '10px' }}>
-                        <div style={{ flex: 0.75 }}></div>
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> C</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>1613</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 0</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>128</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>23</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> B</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>1470</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 2</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>191</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>26</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <div className='flexDuy'>
-                                <div className='blue content-left' style={{ textAlign: 'center' }}> A</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Expected Attendence</div>
-                                <div className='yellowFLex content-left'>2980</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Leave Factory</div>
-                                <div className='yellowFLex content-left'> 0</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Absence</div>
-                                <div className='yellowFLex content-left'>284</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Maternity Leave</div>
-                                <div className='yellowFLex content-left'>79</div>
-                            </div>
-
-                            <div className='flexDuy'>
-                                <div className='blue content-left'> Accident</div>
-                                <div className='yellowFLex content-left'>0</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style={{ flex: 2.5, display: 'flex' }}>
-                    <div style={{ flex: 1, display: 'flex' }}>
-
-
-                        <div style={{ flex: 8, display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-                            <table className='table-left'>
-                                <tbody>
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Expected Attendence
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            12177
-                                        </td>
-                                        <td className='column3 orange' >
-
-                                            <div className='persent orange'>
-                                                100%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '100%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Actual Attendence
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            10352
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                85.01%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '85.01%', height: '100%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Leave Factory
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            2
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                0.02%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '0.02%', height: '100%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Absence
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            1748
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                14.35%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '14.35%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Maternity Leave
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            272
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                2.23%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '2.23%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Accident Month
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            0
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                0%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '0%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr >
-                                        <td className='column1 green'>
-                                            Accident Year
-                                        </td>
-                                        <td className='column2 yellowFLex'>
-                                            2
-                                        </td>
-                                        <td className='column3 orange'>
-                                            <div className='persent orange'>
-                                                2%
-                                            </div>
-                                            <div style={{ background: '#397CB4', width: '0.02%' }}>
-                                                &emsp;
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                        <div style={{ flex: 2, display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection:'column', gap: '20px' }}>
-                            <table className='table-right'>
-                                <thead>
-                                    <tr>
-                                        <td colSpan={2}
-                                            className='green grey'
-                                        >
-                                            Last Months
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className='green grey'>Expected Attendence</td>
-                                        <td className='yellowFLex grey'>12505</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className='green grey'>Turnover Rate</td>
-                                        <td className='yellowFLex grey'>2.99%</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className='green grey'>Maternity Leave</td>
-                                        <td className='yellowFLex grey'>282</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table className='table-right'>
-                                <thead>
-                                    <tr>
-                                        <td colSpan={2}
-                                            className='orange grey'
-                                        >
-                                            Over Time Today
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className='green grey'>Quantity</td>
-                                        <td className='yellowFLex grey'>0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+  return (
+    <div className="hinhnen w-screen h-screen absolute left-0 top-0 overflow-hidden">
+      <ModalBuilding isOpen={openModal}>
+        <div>
+          <div className="flex relative justify-end p-2  ">
+            <button
+              className="text-2xl rounded-full right-0 bg-gray-200 px-2.5 "
+              onClick={() => setOpenModal(false)}
+            >
+              X
+            </button>
+          </div>
+          <p className="text-white text-center font-bold text-4xl py-3 -mt-12">
+            {detailName}
+          </p>
+          <div className="flex justify-center ">
+            <table className="table-detail w-full border-separate border-spacing-x-0.5 border-spacing-y-0.5">
+              <tbody>
+                {detail &&
+                  detail.map((item, index) => {
+                    return (
+                      <tr>
+                        <td className="text-blue-300">{item.Name}</td>
+                        <td className="text-blue-300">
+                          {item.ExpectedAttendence + item.Absence}
+                        </td>
+                        <td className="text-blue-300">{item.LeaveFactory}</td>
+                        <td className="text-blue-300">{item.Absence}</td>
+                        <td className="text-blue-300">{item.MaternityLeave}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
-    )
+      </ModalBuilding>
+      <img
+        src={hinhnen}
+        alt=""
+        style={{
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          marginTop: "40px",
+        }}
+      />
+      <div
+        style={{
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          zIndex: 19,
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-end",
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "70px",
+                color: "white",
+                fontWeight: "bold",
+                textAlign: "center",
+                marginTop: "-10px",
+              }}
+            >
+              {t('hr.title')}
+            </span>
+          </div>
+        </div>
+        <div
+          style={{
+            flex: 2,
+            display: "flex",
+            justifyContent: "center",
+            zIndex: 9,
+            opacity: 0.7,
+            marginBottom: "10px",
+          }}
+        >
+          <div style={{ display: "flex", width: "70%", gap: 50 }}>
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("D")}>
+              <CardBuilding items={data && data?.ManBuildingD} />
+            </div>
+
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("R2")}>
+              <CardBuilding items={data && data?.ManBuildingR2} />
+            </div>
+
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("R1")}>
+              <CardBuilding items={data && data?.ManBuildingR1} />
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            flex: 2.5,
+            display: "flex",
+            justifyContent: "center",
+            zIndex: 9,
+            opacity: 0.9,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              gap: 50,
+              flex: 1,
+              paddingRight: "50px",
+              marginBottom: "10px",
+            }}
+          >
+            <div style={{ flex: 0.75 }}></div>
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("C")}>
+              <CardBuilding items={data && data?.ManBuildingC} />
+            </div>
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("B")}>
+              <CardBuilding items={data && data?.ManBuildingB} />
+            </div>
+            <div style={{ flex: 1 }} onClick={() => openModalBuilding("A")}>
+              <CardBuilding items={data && data?.ManBuildingA} />
+            </div>
+          </div>
+        </div>
+
+        <div style={{ flex: 2.5, display: "flex" }}>
+          <div style={{ flex: 1, display: "flex" }}>
+            <div
+              style={{
+                flex: 8,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "flex-start",
+              }}
+            >
+              <table className="table-left  border-separate border-spacing-x-1.5 border-spacing-y-0.5">
+                <tbody>
+                  <tr>
+                    <td className="w-3/12 column1 green">
+                    {t('hr.Expected_Attendence')}
+                      {/* Expected Attendence */}
+                    </td>
+                    <td className="w-2/12 column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.ExpectedAttendence}
+                    </td>
+                    <td className="w-7/12 column3 orange  ">
+                      <div className="persent ">
+                        {(Number(data?.ManpowerTotal?.ExpectedAttendence) /
+                          Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.ExpectedAttendence) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                    {t('hr.Actual_Attendence')}
+
+                      {/* Actual Attendence */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.ActualAttendence}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.ActualAttendence) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.ActualAttendence) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                    {t('hr.Leave_Factory')}
+
+                      {/* Leave Factory */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.LeaveFactory}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.LeaveFactory) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.LeaveFactory) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                    {t('hr.Absence')}
+
+                      {/* Absence */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.Absence}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.Absence) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.Absence) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                      {t('hr.Maternity_Leave')}
+                      {/* Maternity Leave */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.MaternityLeave}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.MaternityLeave) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.MaternityLeave) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                      {t('hr.Accident_Month')}
+                      {/* Accident Month */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.Accident_Month}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.Accident_Month) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.Accident_Month) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="column1 green">
+                      {t('hr.Accident_Year')}
+                      {/* Accident Year */}
+                    </td>
+                    <td className="column2 yellowFLex">
+                      {data && data?.ManpowerTotal?.AccidentYear}
+                    </td>
+                    <td className="column3 orange">
+                      <div className="persent ">
+                        {(
+                          (Number(data?.ManpowerTotal?.AccidentYear) /
+                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                          100
+                        ).toFixed(2)}
+                        %
+                      </div>
+                      <div
+                        style={{
+                          background: "#397CB4",
+                          width: `${(
+                            (Number(data?.ManpowerTotal?.AccidentYear) /
+                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
+                            100
+                          ).toFixed(2)}%`,
+                        }}
+                      >
+                        &emsp;
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style={{
+                flex: 2,
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
+                flexDirection: "column",
+                gap: "20px",
+              }}
+            >
+              <table className="table-right border-separate">
+                <thead>
+                  <tr>
+                    <td
+                      colSpan={2}
+                      className="orange grey text-center font-bold"
+                    >
+                      {t('hr.Last_Months')}
+                      {/* Last Months */}
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="w-1/2 green grey">
+                      {t('hr.Expected_Attendence')}
+                      {/* Expected Attendence */}
+                    </td>
+                    <td className="pr-2 w-1/2 yellowFLex grey">
+                      {data && data?.LastMonth?.ExpectedAttendence}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="w-1/2 green grey">
+                      {t('hr.Turnover_Rate')}
+                      {/* Turnover Rate */}
+                    </td>
+                    <td className="pr-2 w-1/2 yellowFLex grey">
+                      {data && data?.LastMonth?.TurnoverRate}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="w-1/2 green grey">
+                      {t('hr.Maternity_Leave')}
+                      {/* Maternity Leave */}
+                    </td>
+                    <td className="pr-2 w-1/2 yellowFLex grey">
+                      {data && data?.LastMonth?.MaternityLeave}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table className="table-right col  border-separate">
+                <thead>
+                  <tr>
+                    <td
+                      colSpan={2}
+                      className="orange grey  text-center font-bold"
+                    >
+                      {t('hr.Over_Time_Today')}
+                      {/* Over Time Today */}
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="green grey w-1/2">
+                    {t('hr.Quantity')}
+                      {/* Quantity */}
+                    </td>
+                    <td className="pr-2 yellowFLex grey w-1/2">
+                      {data && data?.OverTime?.Qty_Overtime}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default HR
+const CardBuilding = ({ items }) => {
+  const {t} = useTranslation();
+
+  return (
+    <>
+      <div className="flexDuy">
+        <div className="blue content-left" style={{ textAlign: "center" }}>
+          {" "}
+          {items && items?.Name}{t('hr.building')} 
+        </div>
+      </div>
+
+      <div className="flexDuy">
+        <div className="blue content-left">
+          {t('hr.Expected_Attendence')}
+          {/* Expected Attendence */}
+        </div>
+        <div className="yellowFLex content-left">
+          {items && items?.ExpectedAttendence}
+        </div>
+      </div>
+
+      <div className="flexDuy">
+        <div className="blue content-left">
+          {t('hr.Leave_Factory')}
+          {/* Leave Factory */}
+        </div>
+        <div className="yellowFLex content-left">
+          {items && items?.LeaveFactory}
+        </div>
+      </div>
+
+      <div className="flexDuy">
+        <div className="blue content-left">
+        {t('hr.Absence')}
+          {/* Absence */}
+        </div>
+        <div className="yellowFLex content-left">{items && items?.Absence}</div>
+      </div>
+
+      <div className="flexDuy">
+        <div className="blue content-left">
+          {t('hr.Maternity_Leave')}
+          {/* Maternity Leave */}
+        </div>
+        <div className="yellowFLex content-left">
+          {items && items?.MaternityLeave}
+        </div>
+      </div>
+
+      <div className="flexDuy">
+        <div className="blue content-left">
+          {t('hr.Accident')}
+          {/* Accident */}
+        </div>
+        <div className="yellowFLex content-left">
+          {items && items?.Accident}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default HR;

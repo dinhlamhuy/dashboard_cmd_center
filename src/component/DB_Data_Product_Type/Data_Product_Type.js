@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
 import { currentDate } from "../../utils/time";
-import { Data } from "./data";
+// import { Data } from "./data";
 const Data_Product_Type = () => {
   const [listData, setListData] = useState([]);
   const getAPIcheck = async () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import MenuBar from "../../component/MenuBar";
 import { useParams } from "react-router-dom";
-import { BaseAPI, HostSocket } from "../../utils/baseApi";
+import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
 import { DB_Route } from "../../utils/DB_Route";
 import bgImg from "../../assets/image/background.jpg";
 
@@ -18,7 +18,7 @@ const OneScreen = () => {
   useEffect(() => {
     const getAPIcheck = async () => {
       try {
-        const response = await axios.post(BaseAPI + "/dashboard/getdetailscreen", { id_screen: id });
+        const response = await axios.post(BaseAPIScreen + "/dashboard/getdetailscreen", { id_screen: id });
        console.log(response.data.data.data)
         setScreenComponent(response.data.data.data);
 

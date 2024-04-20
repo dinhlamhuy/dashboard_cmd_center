@@ -1,8 +1,9 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable eqeqeq */
 import { useEffect, useState } from "react";
-import { BaseAPI } from "../../utils/baseApi";
+import { BaseAPIScreen } from "../../utils/baseApi";
 import axios from "axios";
+import {fakedata} from './data'
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 const RADIAN = Math.PI / 180;
@@ -274,210 +275,14 @@ const StockFittingQuality_China = () => {
   //     Count_Complete: 0,
   //   },
   // ]);
-  const [listData, setListData] = useState([
-    {
-      Article: "",
-      ShoeName: "CAMPUS 00S W",
-      Line: "GCD_C09",
-      Operator: 18,
-      TimeCount: 8,
-      DepID: "1177",
-      Actual_Output: 5010,
-      PPH: 34.79,
-      RFT: 96,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "COURT 24",
-      Line: "GCD_C08",
-      Operator: 31,
-      TimeCount: 8,
-      DepID: "1089",
-      Actual_Output: 1332,
-      PPH: 5.37,
-      RFT: 86,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "LIGRA 7 M",
-      Line: "GCD_C01",
-      Operator: 47,
-      TimeCount: 8,
-      DepID: "1072",
-      Actual_Output: 1583,
-      PPH: 4.21,
-      RFT: 87,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "D.O.N.",
-      Line: "GCD_C04",
-      Operator: 48,
-      TimeCount: 8,
-      DepID: "1075",
-      Actual_Output: 1350,
-      PPH: 3.52,
-      RFT: 87,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "GRAND",
-      Line: "GCD_C10",
-      Operator: 19,
-      TimeCount: 8,
-      DepID: "1175",
-      Actual_Output: 1537,
-      PPH: 10.11,
-      RFT: 91,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: null,
-      Line: "GCD_C24",
-      Operator: 20,
-      TimeCount: 8,
-      DepID: "1652",
-      Actual_Output: 6006,
-      PPH: 37.54,
-      RFT: 100,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "CRAZYFLIGHT",
-      Line: "GCD_C02",
-      Operator: 47,
-      TimeCount: 8,
-      DepID: "1073",
-      Actual_Output: 1360,
-      PPH: 3.62,
-      RFT: 86,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: null,
-      Line: "GCD_C07",
-      Operator: 18,
-      TimeCount: 8,
-      DepID: "1078",
-      Actual_Output: 5605,
-      PPH: 38.92,
-      RFT: 100,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "GRAND",
-      Line: "GCD_C06",
-      Operator: 42,
-      TimeCount: 8,
-      DepID: "1077",
-      Actual_Output: 1390,
-      PPH: 4.14,
-      RFT: 86,
-      Count_Add: 0,
-      Count_Complete: 1,
-    },
-    {
-      Article: "",
-      ShoeName: "CAMPUS ADV",
-      Line: "GCD_C20",
-      Operator: 31,
-      TimeCount: 8,
-      DepID: "1499",
-      Actual_Output: 3121,
-      PPH: 12.58,
-      RFT: 97,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "GRAND",
-      Line: "GCD_C05",
-      Operator: 48,
-      TimeCount: 8,
-      DepID: "1076",
-      Actual_Output: 2135,
-      PPH: 5.56,
-      RFT: 94,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: null,
-      Line: "GCD_C23",
-      Operator: 26,
-      TimeCount: 8,
-      DepID: "1502",
-      Actual_Output: 4855,
-      PPH: 23.34,
-      RFT: 100,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: "COURT 24",
-      Line: "GCD_C03",
-      Operator: 35,
-      TimeCount: 8,
-      DepID: "1074",
-      Actual_Output: 1640,
-      PPH: 5.86,
-      RFT: 88,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: null,
-      Line: "GCD_C22",
-      Operator: 23,
-      TimeCount: 8,
-      DepID: "1501",
-      Actual_Output: 4601,
-      PPH: 25.01,
-      RFT: 100,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-    {
-      Article: "",
-      ShoeName: null,
-      Line: "GCD_C21",
-      Operator: 20,
-      TimeCount: 8,
-      DepID: "1500",
-      Actual_Output: 4343,
-      PPH: 27.14,
-      RFT: 100,
-      Count_Add: 0,
-      Count_Complete: 0,
-    },
-  ]);
+  const [listData, setListData] = useState(fakedata);
   const [totalMP, setTotalMP] = useState(0);
   const [totalActualOutput, setTotalActualOutput] = useState(0);
   const [totalPPH, setTotalPPH] = useState(0);
   const [totalRFT, setTotalRFT] = useState(0);
   const getAPIcheck = async () => {
     await axios
-      .get(BaseAPI + "/sfq/data_pph_all")
+      .get(BaseAPIScreen + "/sfq/data_pph_all")
       .then((response) => {
         const data = response.data.data.sort((a, b) => {
           // Use localeCompare for string comparison to ensure correct sorting order
@@ -505,22 +310,22 @@ const StockFittingQuality_China = () => {
   };
   useEffect(() => {
     // console.log('check ban đầu')
-    getAPIcheck();
+    // getAPIcheck();
   }, []);
   useEffect(() => {
-    const data = listData.sort((a, b) => {
-      return a.Line.localeCompare(b.Line);
-    });
-    setListData(data);
+    // const data = listData.sort((a, b) => {
+    //   return a.Line.localeCompare(b.Line);
+    // });
+    // setListData(data);
   }, []);
   useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("check 2");
-      getAPIcheck();
-    }, 120000); // 2 phút là 120000 miligiây
+    // const interval = setInterval(() => {
+    //   console.log("check 2");
+    //   getAPIcheck();
+    // }, 120000); // 2 phút là 120000 miligiây
 
-    // Cleanup function to clear the interval when the component unmounts or the effect is re-run
-    return () => clearInterval(interval);
+    // // Cleanup function to clear the interval when the component unmounts or the effect is re-run
+    // return () => clearInterval(interval);
   }, []);
   return (
     <div className="   relative h-screen px-2 pt-3 pt-10 overflow-auto">

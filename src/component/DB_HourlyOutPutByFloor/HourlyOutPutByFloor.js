@@ -4,56 +4,59 @@ import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
 import { Data } from "./data";
 import { currentDate } from "../../utils/time";
+import { useTranslation } from "react-i18next";
 
 function HourlyOutPutByFloor() {
-
+  const {t} = useTranslation();
   const [listHourlyOutput, setListHourlyOutput] = useState(Data);
   const getAPIcheck = async () => {
     await axios
-      .get(BaseAPI + "/bcsl/sanluongline")
+      .get(BaseAPI + "/Get_Data_Hourly_Output_By_Floor")
       .then((response) => {
         // console.table(response.data.data);
-        setListHourlyOutput(response.data.data);
+        const listHourlyOutput = [...response.data.Hourly_Output_By_Floor1, ...response.data.Hourly_Output_By_Floor2];
+
+        setListHourlyOutput(listHourlyOutput);
+        
       })
       .catch(() => {});
   };
   useEffect(() => {
     getAPIcheck();
-    
 
   }, []);
   // useEffect(() => {
   //   const rotateList = () => {
-  //       setListHourlyOutput(prevList => {
-  //           const newList = [...prevList];
-  //           const first15 = newList.splice(0, 15); // Extracting the first 15 objects
-  //           newList.push(...first15); // Appending the extracted objects to the end
-  //           return newList;
-  //       });
+  //     setListHourlyOutput((prevList) => {
+  //       const newList = [...prevList];
+  //       const first15 = newList.splice(0, 1); // Extracting the first 15 objects
+  //       newList.push(...first15); // Appending the extracted objects to the end
+  //       return newList;
+  //     });
   //   };
 
   //   const interval = setInterval(() => {
-  //       rotateList();
-  //   }, 15000); // 15 seconds in milliseconds
+  //     rotateList();
+  //   }, 1500); // 15 seconds in milliseconds
 
-//     return () => clearInterval(interval); // Cleanup function to clear interval when component unmounts
-// }, []);
+  //   return () => clearInterval(interval); // Cleanup function to clear interval when component unmounts
+  // }, []);
   return (
     <>
       <div className="   overflow-hidden" >
-        <p className="text-center text-white text-4xl font-bold py-4">HOURLY OUT PUT - BY FLOOR {currentDate}</p>
+        <p className="text-center text-white text-4xl font-bold py-4">{t('hourlyoutputbyfloor.title')} ( {currentDate} ) </p>
         <div className="grid grid-cols-1 xl:grid-cols-2 h-full w-full ">
           <div className="flex justify-center ">
             <table className="table table-fixed flex justify-start border w-full">
               <thead>
                 <tr>
-                  <th className="text-sm text-blue-300 w-12 ">Line</th>
-                  <th className="text-sm text-blue-300 w-12 ">Total Member</th>
-                  <th className="text-sm text-blue-300 w-12 ">In Direct</th>
-                  <th className="text-sm text-blue-300 w-12 ">Today Absent</th>
-                  <th className="text-sm text-blue-300 w-12 ">Today Member</th>
-                  <th className="text-sm text-blue-300 w-12 ">Capacity</th>
-                  <th className="text-sm text-blue-300 w-12 ">Target</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Line')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Total_Member')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.In_Direct')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Today_Absent')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Today')}<br />{t('hourlyoutputbyfloor.Member')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Capacity')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Target')}<br />{t('hourlyoutputbyfloor.output')}</th>
                   <th className="text-sm text-blue-300 w-12 ">07:30-08:30</th>
                   <th className="text-sm text-blue-300 w-12 ">08:30-09:30</th>
                   <th className="text-sm text-blue-300 w-12 ">09:30-10:30</th>
@@ -68,14 +71,14 @@ function HourlyOutPutByFloor() {
               <tbody>
                 {listHourlyOutput &&
                   listHourlyOutput
-                    .slice(0, Math.ceil(listHourlyOutput.length / 2))
+                    .slice(0, 42)
                     .map((item, index) => {
                       const colortr =
-                        item.line === "Total" ? "bg-gray-400" : "";
+                        item.Line === "Total" ? "bg-gray-400" : "";
                       return (
                         <tr key={"sl" + index} className={`${colortr}`}>
-                        <td className={` text-sm ${ item.line === "Total" ? ' text-teal-400 ':' text-yellow-400 '} font-bold `}>
-                            {item.line}
+                        <td className={` text-sm ${ item.Line === "Total" ? ' text-teal-400 ':' text-yellow-400 '} font-bold `}>
+                            {item.Line}
                           </td>
                           <td className=" text-sm text-yellow-400 font-bold text-center ">
                             {item.Total_Member}
@@ -133,13 +136,13 @@ function HourlyOutPutByFloor() {
             <table className="table table-fixed flex justify-start border w-full">
               <thead>
                 <tr>
-                  <th className="text-sm text-blue-300 w-12 ">Line</th>
-                  <th className="text-sm text-blue-300 w-12 ">Total Member</th>
-                  <th className="text-sm text-blue-300 w-12 ">In Direct</th>
-                  <th className="text-sm text-blue-300 w-12 ">Today Absent</th>
-                  <th className="text-sm text-blue-300 w-12 ">Today Member</th>
-                  <th className="text-sm text-blue-300 w-12 ">Capacity</th>
-                  <th className="text-sm text-blue-300 w-12 ">Target</th>
+                <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Line')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Total_Member')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.In_Direct')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Today_Absent')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Today')}<br />{t('hourlyoutputbyfloor.Member')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Capacity')}</th>
+                  <th className="text-sm text-blue-300 w-12 ">{t('hourlyoutputbyfloor.Target')}<br />{t('hourlyoutputbyfloor.output')}</th>
                   <th className="text-sm text-blue-300 w-12 ">07:30-08:30</th>
                   <th className="text-sm text-blue-300 w-12 ">08:30-09:30</th>
                   <th className="text-sm text-blue-300 w-12 ">09:30-10:30</th>
@@ -154,14 +157,14 @@ function HourlyOutPutByFloor() {
               <tbody>
                 {listHourlyOutput &&
                   listHourlyOutput
-                  .slice(Math.ceil(listHourlyOutput.length / 2))
+                  .slice(42, 44+41)
                     .map((item, index) => {
                       const colortr =
-                        item.line === "Total" ? "bg-gray-400" : "";
+                        item.Line === "Total" ? "bg-gray-400" : "";
                       return (
                         <tr key={"sl" + index} className={`${colortr}`}>
-                          <td className={` text-sm ${ item.line === "Total" ? ' text-teal-400 ':' text-yellow-400 '} font-bold `}>
-                          {item.line}
+                          <td className={` text-sm ${ item.Line === "Total" ? ' text-teal-400 ':' text-yellow-400 '} font-bold `}>
+                          {item.Line}
                           </td>
                           <td className=" text-sm text-yellow-400 font-bold text-center ">
                             {item.Total_Member}

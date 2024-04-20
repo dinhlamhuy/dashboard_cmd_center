@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 // import bgImg from "../../assets/image/background.jpg";
 const AssemblyQuality = () => {
   const [listData, setListData] = useState([]);
@@ -10,7 +11,7 @@ const AssemblyQuality = () => {
   const [totalActualOutput, setTotalActualOutput] = useState(0);
   const [totalPPH, setTotalPPH] = useState(0);
   const [totalRFT, setTotalRFT] = useState(0);
-
+const {t}=useTranslation();
   const getAPIcheck = async () => {
     await axios
       .get(BaseAPI + "/aq/data_assembly_quality")
@@ -66,27 +67,30 @@ const AssemblyQuality = () => {
   }, []);
 
   return (
-    <div className=" overflow-hidden h-screen w-full  px-2 pt-3">
-      <div className="text-white text-4xl text-center font-bold pb-5">
-        Assembly Quality
+    <div className=" overflow-hidden h-screen w-full px-2 pt-3">
+      <div className="w-full h-full">
+
+      <div className="text-white w-full text-4xl text-center font-bold pb-5">
+        {t('assembly_quality.title')}
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 w-full">
         <div>
           <table className="table w-full  pl-3 pr-6 text-white border-separate border-spacing-y-1 ">
             <thead>
               <tr className="backdrop-brightness-125 bg-blue-950/40  ">
-                <th className="text-blue-400 w-32 text-lg text-center">Lean</th>
-                <th className="text-blue-400 w-12 text-lg text-center">MP</th>
-                <th className="text-blue-400 w-24 text-lg text-center">
-                  Actual Output
+                <th className="text-blue-400 w-32 text-lg text-center">{t('assembly_quality.Lean')}</th>
+                <th className="text-blue-400 w-12 text-lg text-center">{t('assembly_quality.MP')}</th>
+                <th className="text-blue-400 w-24 text-md text-center">
+                          {t('assembly_quality.Actual')}<br />{t('assembly_quality.Output')}
+
                 </th>
-                <th className="text-blue-400 w-18 text-lg text-center">PPH</th>
-                <th className="text-blue-400 w-24 text-lg text-center">RFT</th>
+                <th className="text-blue-400 w-18 text-lg text-center">{t('assembly_quality.PPH')}</th>
+                <th className="text-blue-400 w-24 text-lg text-center">{t('assembly_quality.RFT')}</th>
                 <th className="text-blue-400 w-32 text-lg text-center">
-                  Shoe Name
+                  {t('assembly_quality.Shoe_Name')}
                 </th>
                 <th className="text-blue-400 w-64 text-lg text-center">
-                  Stop Line
+                {t('assembly_quality.Stop_Line')}
                 </th>
               </tr>
             </thead>
@@ -124,15 +128,16 @@ const AssemblyQuality = () => {
           </table>
         </div>
 
-        <div className=" mt-1 text-white h-96 px-3 mx-5">
+        <div className="  text-white h-96 px-3 mx-5">
           <table className="table w-full border-separate border-spacing-y-1">
             <thead>
               <tr className="backdrop-brightness-125 bg-blue-950/40  ">
-                <th className="text-center w-24">Total</th>
-                <th className="text-center w-12">MP</th>
-                <th className="text-center w-32">Actual Output</th>
-                <th className="text-center w-12">PPH</th>
-                <th className="text-center w-24">RFT</th>
+                <th className="text-center text-lg w-24">
+                  {t('assembly_quality.Total')}</th>
+                <th className="text-center w-12 text-lg">{t('assembly_quality.MP')}</th>
+                <th className="text-center w-32 text-md">{t('assembly_quality.Actual')}<br />{t('assembly_quality.Output')}</th>
+                <th className="text-center w-12 text-lg">{t('assembly_quality.PPH')}</th>
+                <th className="text-center w-24 text-lg" >{t('assembly_quality.RFT')}</th>
               </tr>
             </thead>
             <tbody>
@@ -159,6 +164,7 @@ const AssemblyQuality = () => {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </div>
   );

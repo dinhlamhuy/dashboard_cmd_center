@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { useEffect, useState } from "react";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
@@ -22,7 +23,7 @@ const Shipping_Shedule = () => {
         let totalDetailScanQty=0;
         // console.table(response.data.data);
         setGetShippingMain(response.data.data.Get_Shipping_Main);
-        response.data.data && response.data.data.Get_Shipping_Main.map((item, index) => {
+        response.data.data && response.data.data.Get_Shipping_Main.map((item) => {
           totalMainPO+=Number(item.PO)
           totalMainQty+=Number(item.Qty)
           totalMainUnScanQty+=Number(item.UnPack)
@@ -36,8 +37,7 @@ const Shipping_Shedule = () => {
           totalMainInspect:totalMainInspect,
 
         })
-      
-
+    
         setGetShippingDetail(response.data.data.Get_Shipping_Detail);
 
         response.data.data && response.data.data.Get_Shipping_Detail.map((item, index) => {
@@ -60,7 +60,7 @@ const Shipping_Shedule = () => {
   }, []);
 
   return (
-    <div className="w-full h-full px-4 ">
+    <div className="w-full h-screen px-4 ">
       <div className="w-full flex justify-center">
         <p className="text-4xl text-white text-center font-bold ">
           Shipping Shedule
@@ -126,7 +126,7 @@ const Shipping_Shedule = () => {
               {getShippingDetail &&
                 getShippingDetail.map((item, index) => {
                   return (
-                    <tr className="">
+                    <tr key={index}>
                       <td className="px-1 text-yellow-400  text-center">
                         {moment(item.ShipDate, "YYYY-MM-DD").format(
                           "YYYY/MM/DD"

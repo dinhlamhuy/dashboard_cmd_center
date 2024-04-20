@@ -35,9 +35,10 @@
 }
 
 .title {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 700;
     color: white;
+    margin-bottom: 10px;
 }
 
 .Data_KPI_Total_table {

@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
-import { BaseAPI, HostSocket } from "../../utils/baseApi";
+import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
 const MenuScreen = () => {
   // const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
@@ -138,7 +138,7 @@ const MenuScreen = () => {
 ]);
   const getComponent = async (idScreen) => {
     await axios
-      .post(BaseAPI + "/dashboard/getlistcomponent", {
+      .post(BaseAPIScreen + "/dashboard/getlistcomponent", {
         id_screen: idScreen + 1,
       })
       .then((response) => {
@@ -162,7 +162,7 @@ const MenuScreen = () => {
       };
     }
     await axios
-      .post(BaseAPI + "/dashboard/insertcomponentscreen", data)
+      .post(BaseAPIScreen + "/dashboard/insertcomponentscreen", data)
       .then((response) => {
         setChooseComponentValue("");
         setChooseScreen("");
@@ -178,7 +178,7 @@ const MenuScreen = () => {
     };
 
     await axios
-      .post(BaseAPI + "/dashboard/swapscreen", data)
+      .post(BaseAPIScreen + "/dashboard/swapscreen", data)
       .then((response) => {
         // console.log(response.data.data);
         getAPI();
@@ -188,7 +188,7 @@ const MenuScreen = () => {
   };
   const getAPI = async () => {
     await axios
-      .post(BaseAPI + "/dashboard/getlistscreen")
+      .post(BaseAPIScreen + "/dashboard/getlistscreen")
       .then((response) => {
         // console.log(response.data.data);
         setList(response.data.data.data);
@@ -198,7 +198,7 @@ const MenuScreen = () => {
   useEffect(() => {
     const getAPIcheck = async () => {
       await axios
-        .post(BaseAPI + "/dashboard/getlistscreen")
+        .post(BaseAPIScreen + "/dashboard/getlistscreen")
         .then((response) => {
           // console.log(response.data.data);
           setList(response.data.data.data);
@@ -270,22 +270,23 @@ const MenuScreen = () => {
   return (
     <>
       <MenuBar isActive={"menu"}>
-        <div className="w-full h-screen bg-gray-900 grid p-0 m-0 grid-cols-4 gap-3 ">
+        <div className="w-full relative h-screen bg-gray-900 grid p-0 m-0 grid-cols-4 gap-3 h-1/4 ">
           {list &&
             list.map((item, index) => {
               return (
                 <button
                   onClick={() => ChooseScreen(index, item)}
-                  className={` h-full w-full  text-center   font-bold rounded-lg`}
+                  className={`relative overflow-hidden  h-full w-full  text-center   font-bold rounded-lg`}
                   key={"frame" + index}
+              
                 >
                   <div
                     className={`${
-                      screenFrom === index
+                      screenFrom === index 
                         ? "ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-red-800 text-white"
                         : " backdrop-blur-md bg-gray-950 text-yellow-400 "
                     } 
-              text-xl select-none  w-full flex justify-center items-center text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400  w-full h-full   items-center `}
+              text-xl  select-none absolute left-0 top-0 w-full h-full flex justify-center items-center text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400     items-center `}
                   >
                     {item.DB_name}
                   </div>

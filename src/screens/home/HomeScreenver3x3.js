@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
-import { BaseAPI, HostSocket } from "../../utils/baseApi";
+import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
 import { DB_Route } from "../../utils/DB_Route";
 const HomeScreen = () => {
   const navigate = useNavigate();
@@ -144,7 +144,7 @@ const HomeScreen = () => {
   useEffect(() => {
     const getAPIcheck = async () => {
       await axios
-        .post(BaseAPI + "/dashboard/getlistscreen")
+        .post(BaseAPIScreen + "/dashboard/getlistscreen")
         .then((response) => {
           // console.log(response.data.data);
           setList(response.data.data.data);
@@ -170,12 +170,12 @@ const HomeScreen = () => {
       <MenuBar isActive={"home"}>
         <div className="w-screen h-screen  bg-gray-900 grid p-0 m-0 grid-cols-4 gap-1 relative   ">
           {list &&
-            list.map((item, index) => {
+            list.slice(0,9).map((item, index) => {
               const Component = DB_Route[item.DB_url];
               const url = item.DB_url;
               // let so=0;
-              const rowIndex = Math.floor(index / 4) + 1;
-              const colIndex = index % 4;
+              const rowIndex = Math.floor(index / 3) + 1;
+              const colIndex = index % 3;
 
               if (!Component) {
                 // Xử lý trường hợp nếu không tìm thấy component
@@ -183,13 +183,17 @@ const HomeScreen = () => {
                 return (
                   <div
                     style={{
-                      left: `calc(${colIndex} / 4 * 100%)`,
-                      top: `calc(${rowIndex - 1} / 4 * 100%)`,
+                      left: `calc(${colIndex} / 3 * 100%)`,
+                      top: `calc(${rowIndex - 1} / 3 * 100%)`,
                     }}
                     key={index}
-                    className={`h-1/4 absolute w-1/4   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
+                    className={`h-1/3 absolute w-1/3   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
                   >
-                    {item.DB_name}
+                    {/* {item.DB_name} */}
+
+                    <iframe src="http://192.168.30.19/Dashboard/#/production" width="100%" height="100%" title="W3Schools Free Online Web Tutorials">
+</iframe>
+
                   </div>
                 );
               }
@@ -197,10 +201,10 @@ const HomeScreen = () => {
               return (
                 <div
                   style={{
-                    left: `calc(${colIndex} / 4 * 100%)`,
-                    top: `calc(${rowIndex - 1} / 4 * 100%)`,
+                    left: `calc(${colIndex} / 3 * 100%)`,
+                    top: `calc(${rowIndex - 1} / 3 * 100%)`,
                   }}
-                  className={` h-1/4 w-1/4 bg-gray-950 absolute  overflow-hidden`}
+                  className={` border border-2 border-black h-1/3 w-1/3 bg-gray-950 absolute px-0  overflow-hidden`}
                 >
                   <button
                     onClick={() => navigateToDetail(url)}
@@ -208,7 +212,7 @@ const HomeScreen = () => {
                     key={"frame" + index}
                   >
                     <div
-                      className={` bg-gray-950  
+                      className={` bg-gray-950   
               text-xl select-none text-ellipsis   w-full h-full flex justify-center items-center p-0 m-0 `}
                     >
                       <Component />

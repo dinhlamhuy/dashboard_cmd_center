@@ -333,9 +333,9 @@ const StockFittingQuality_VerEn = () => {
       <div className=" w-[100%] relative grid grid-cols-2 base:grid-cols-3 sm:grid-cols-4  md:grid-cols-5 lg:grid-cols-8  xl:grid-cols-8 gap-4 mt-7 ">
         {listData
           .sort((a, b) => a.Line - b.Line)
-          .map((item) => {
+          .map((item, index) => {
             return (
-              <div
+              <div key={index}
                 className={`select-none base:h-[200px] be:h-[190px]  sm:h-[175px] md:h-[179px] lg:h-[140px] xl:h-[160px] xl:h-[170px] 2xl:h-[200px] max-w-xs pie-chart-container mt-3  ${
                   item.Count_Add > 0
                     ? "border-red-400 bg-red-950/90"
@@ -343,7 +343,7 @@ const StockFittingQuality_VerEn = () => {
                 }  backdrop-brightness-125 border rounded-xl relative px-0  mx-0 flex justify-center items-center`}
               >
                 {/* <ResponsiveContainer> */}
-                  <PieChart
+                  <PieChart  key={'ds'+index}
                     width={300}
                     height={195} 
                     className="select-none rounded-xl absolute  mx-0 ms:mx-2 md:mx-2 lg:mx-1 xl:mx-2  2xl:mx-6 "
