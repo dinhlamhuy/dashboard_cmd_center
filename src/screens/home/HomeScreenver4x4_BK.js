@@ -8,7 +8,7 @@ import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
 import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
 import { DB_Route } from "../../utils/DB_Route";
-const HomeScreen = () => {
+const HomeScreen4x4 = () => {
   const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
   const [ClickScreen, setClickScreen] = useState("");
@@ -167,15 +167,15 @@ const HomeScreen = () => {
 
   return (
     <>
-      <MenuBar isActive={"home"}>
+      <MenuBar isActive={"4x4"}>
         <div className="w-screen h-screen  bg-gray-900 grid p-0 m-0 grid-cols-4 gap-1 relative   ">
           {list &&
-            list.slice(0,9).map((item, index) => {
+            list.map((item, index) => {
               const Component = DB_Route[item.DB_url];
               const url = item.DB_url;
               // let so=0;
-              const rowIndex = Math.floor(index / 3) + 1;
-              const colIndex = index % 3;
+              const rowIndex = Math.floor(index / 4) + 1;
+              const colIndex = index % 4;
 
               if (!Component) {
                 // Xử lý trường hợp nếu không tìm thấy component
@@ -183,11 +183,11 @@ const HomeScreen = () => {
                 return (
                   <div
                     style={{
-                      left: `calc(${colIndex} / 3 * 100%)`,
-                      top: `calc(${rowIndex - 1} / 3 * 100%)`,
+                      left: `calc(${colIndex} / 4 * 100%)`,
+                      top: `calc(${rowIndex - 1} / 4 * 100%)`,
                     }}
                     key={index}
-                    className={`h-1/3 absolute w-1/3   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
+                    className={`h-1/4 absolute w-1/4   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
                   >
                     {/* {item.DB_name} */}
 
@@ -201,10 +201,10 @@ const HomeScreen = () => {
               return (
                 <div
                   style={{
-                    left: `calc(${colIndex} / 3 * 100%)`,
-                    top: `calc(${rowIndex - 1} / 3 * 100%)`,
+                    left: `calc(${colIndex} / 4 * 100%)`,
+                    top: `calc(${rowIndex - 1} / 4 * 100%)`,
                   }}
-                  className={` border border-2 border-black h-1/3 w-1/3 bg-gray-950 absolute px-0  overflow-hidden`}
+                  className={`  border-2 border-black h-1/4 w-1/4 bg-gray-950 absolute px-0  overflow-hidden`}
                 >
                   <button
                     onClick={() => navigateToDetail(url)}
@@ -227,4 +227,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default HomeScreen4x4;

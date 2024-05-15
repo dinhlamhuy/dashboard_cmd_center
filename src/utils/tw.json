@@ -47,7 +47,7 @@
         "Total": "線別"
     },
     "quality_kpi_total": {
-        "title": "Quality KPI Total",
+        "title": "2024 全廠品質績效指標",
         "ID": "ID",
         "Year": "廠別",
         "Factory": "廠別",
@@ -66,22 +66,60 @@
         "Dec": "12月",
         "Total": "總計"
     },
-    "data_quality": {
-        "title": "Data Quality",
+    "availability_KPI": {
+        "title": "業務關鍵績效指標",
         "Item": "Item",
-        "Months": "Months",
-        "Jan": "JAN",
-        "Feb": "Feb",
-        "Mar": "Mar",
-        "Apr": "Apr",
-        "May": "May",
-        "Jun": "Jun",
-        "Jul": "Jul",
-        "Aug": "Aug",
-        "Sep": "Sep",
-        "Oct": "Oct",
-        "Nov": "Nov",
-        "Dec": "Dec",
-        "Total": "Total"
+        "Total_Qty":"總數量",
+        "Achieved":"達成率",
+        "Efficiency_Target1":"目標",
+        "Efficiency_Target2":"效率",
+        "Efficiency_Actual1":"實際",
+        "Efficiency_Actual2":"效率",
+        "Month": "月份",
+        "Jan": "1月",
+        "Feb": "2月",
+        "Mar": "3月",
+        "Apr": "4月",
+        "May": "5月",
+        "Jun": "6月",
+        "Jul": "7月",
+        "Aug": "8月",
+        "Sep": "9月",
+        "Oct": "10月",
+        "Nov": "11月",
+        "Dec": "12月",
+        "Total": "總計"
+    },
+    "StockFittingQuality":{
+        "title":"底加工品質",
+        "Lean":"線別",
+        "ShoeName":"鞋型",
+        "StopLine":"停線"
+    },
+    "ShippingShedule": {
+        "title": "出貨計畫表",
+        "ShipDate": "出貨<br />日期",
+        "PO": "訂單<br />數量",
+        "Ship_Qty": "出貨<br />數量",
+        "UnScan_Qty": "未掃描<br />數量",
+        "Wait_Inspect": "待檢驗<br />數量",
+        "Total": "Total",
+        "RY": "訂單編號",
+        "Qty": "數量",
+        "Scan_Qty": "掃描<br />數量",
+        "UnScan": "未掃描<br />數量",
+        "Article": "Article",
+        "Shoe_Name": "鞋型",
+        "Lean": "線別",
+        "CRD": "客戶要求<br />出貨日",
+        "SDD": "預計<br />出貨日",
+        "Country": "國家"
+    },
+    "CS3_TRIAL_SCHEDULE":{
+        "title": "CS3 試做計劃表",
+        "Season_Start":"起始季節",
+        "Year_Start":"起始年度",
+        "Season_End":"截止季節",
+        "Year_End":"截止年度"
     }
 }

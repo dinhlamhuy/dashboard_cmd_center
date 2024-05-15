@@ -40,8 +40,8 @@ const needle = (value, cx, cy, iR, oR, color) => {
   const yp = y0 + length * sin;
 
   return [
-    <circle cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
-    <path
+    <circle key={'skdask'+value} cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
+    <path key={'skdask2'+value}
       d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
       stroke="#none"
       fill={color}
@@ -503,35 +503,35 @@ const StockFittingQuality = () => {
       })
       .catch(() => {});
   };
-  useEffect(() => {
-    // console.log('check ban đầu')
-    getAPIcheck();
-  }, []);
-  useEffect(() => {
-    const data = listData.sort((a, b) => {
-      return a.Line.localeCompare(b.Line);
-    });
-    setListData(data);
-  }, []);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("check 2");
-      getAPIcheck();
-    }, 120000); // 2 phút là 120000 miligiây
+  // useEffect(() => {
+  //   // console.log('check ban đầu')
+  //   // getAPIcheck();
+  // }, []);
+  // useEffect(() => {
+  //   const data = listData.sort((a, b) => {
+  //     return a.Line.localeCompare(b.Line);
+  //   });
+  //   setListData(data);
+  // }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     console.log("check 2");
+  //     // getAPIcheck();
+  //   }, 120000); // 2 phút là 120000 miligiây
 
     // Cleanup function to clear the interval when the component unmounts or the effect is re-run
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
   return (
-    <div className="   relative h-screen px-2 pt-3 pt-10 overflow-auto">
+    <div className="   relative h-screen px-2 pt-10 overflow-auto">
       <div className="text-white text-6xl text-center font-bold pb-3">Stock Fitting Quality</div>
       <div className="flex justify-center items-center mt-6">
       <div className=" w-[100%] relative grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-8 gap-4 mt-7 ">
         {listData
           .sort((a, b) => a.Line - b.Line)
-          .map((item) => {
+          .map((item, index) => {
             return (
-              <div
+              <div key={'nd'+index}
                 className={` max-w-xs pie-chart-container mt-3  ${
                   item.Count_Add > 0
                     ? "border-red-400 bg-red-950/90"

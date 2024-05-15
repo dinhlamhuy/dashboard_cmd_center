@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import hinhnen from "../../assets/image/New_LHG.png";
 // import hinhhr from '../../assets/img/MES_Sky_blue.png'
 import "./HR.css";
+import { Datafake } from "./data";
 import { BaseAPI } from "../../utils/baseApi";
 import axios from "axios";
 import ModalBuilding from "./modalBuilding";
 import { useTranslation } from "react-i18next";
+import ModalBuilding2 from "./modalBuilding2";
 function HR() {
   const [openModal, setOpenModal] = useState(false);
-  const [data, setData] = useState({});
+  const [openModal2, setOpenModal2] = useState(true);
+  const [data, setData] = useState(Datafake);
+  const [dataManpowerTotal, setDataManpowerTotal] = useState(
+    Datafake.ManpowerTotal
+  );
   const [detail, setDetail] = useState([]);
   const [detailName, setDetailname] = useState("");
-  const {t} = useTranslation();
+  const [classNa, setClassNa] = useState(" element");
+  const { t } = useTranslation();
   const openModalBuilding = (building) => {
     getAPIdetail(building);
     setDetailname(building);
@@ -23,6 +30,8 @@ function HR() {
       .get(BaseAPI + "/Get_Data_HR")
       .then((response) => {
         setData(response.data);
+        // console.log(response.data.ManpowerTotal);
+        setDataManpowerTotal(response.data.ManpowerTotal);
       })
       .catch(() => {});
   };
@@ -36,10 +45,52 @@ function HR() {
   };
   useEffect(() => {
     getAPIcheck();
+    // const intervalId = setInterval(() => {
+    //   getAPIcheck();
+    // }, 60 * 60 * 1000); // 4 phút trong milliseconds
+
+    // return () => clearInterval(intervalId); // Cleanup function to clear interval when component unmounts
   }, []);
 
+  // useEffect(() => {
+
+  //   const timeout = setTimeout(() => {
+  //     setDataManpowerTotal(data?.ManpowerTotal);
+
+  //     setClassNa("");
+  //     // console.log('element2')
+  //     setTimeout(() => {
+  //       // console.log('tắt')
+  //       setDataManpowerTotal(Datafake?.ManpowerTotal);
+  //       setClassNa("element2");
+  //     }, 8000);
+
+  //     // console.log("d3haha");
+  //   }, 15000);
+
+  //   return () => clearTimeout(timeout); // Clear timeout khi unmount component
+  // }, [data, dataManpowerTotal]);
+
+
+    useEffect(() => {
+
+    const timeout = setTimeout(() => {
+      
+      setOpenModal2(false);
+
+      setTimeout(() => {
+   
+        setOpenModal2(true)
+        
+      }, 5500);
+
+      // console.log("d3haha");
+    }, 15000);
+
+    return () => clearTimeout(timeout); // Clear timeout khi unmount component
+  }, [data,openModal2]);
   return (
-    <div className="hinhnen w-screen h-screen absolute left-0 top-0 overflow-hidden">
+    <div className=" w-full h-full absolute left-0 top-0 ">
       <ModalBuilding isOpen={openModal}>
         <div>
           <div className="flex relative justify-end p-2  ">
@@ -75,6 +126,260 @@ function HR() {
           </div>
         </div>
       </ModalBuilding>
+      <div className={`${openModal2 ? 'hidden':'block'} relative z-50  bg-gray-400`}>
+      {/* border-separate border-spacing-x-1.5 border-spacing-y-0.5 */}
+        <table className="table-left font-bold absolute top-40 left-56  border-7 ">
+          <tbody>
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="w-3/12 column1 green ml-6">
+                {t("hr.Expected_Attendence")}
+                {/* Expected Attendence */}
+              </td>
+              <td className="w-2/12   column2 yellowFLexCenter">
+                {data && dataManpowerTotal.ExpectedAttendence}
+              </td>
+              <td className="w-7/12 column3 orange  ">
+                <div className="persent z-20 ">
+                  {dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.ExpectedAttendence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.ExpectedAttendence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="column1 green">
+                {t("hr.Actual_Attendence")}
+
+                {/* Actual Attendence */}
+              </td>
+              <td className="column2 yellowFLexCenter">
+                {data && dataManpowerTotal.ActualAttendence}
+              </td>
+              <td className="column3 orange">
+                <div className="persent z-20">
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.ActualAttendence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.ActualAttendence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="column1 green">
+                {t("hr.Leave_Factory")}
+
+                {/* Leave Factory */}
+              </td>
+              <td className="column2 yellowFLexCenter">
+                {data && dataManpowerTotal.LeaveFactory}
+              </td>
+              <td className="column3 orange">
+                <div className="persent z-20">
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.LeaveFactory) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.LeaveFactory) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="column1 green">
+                {t("hr.Absence")}
+
+                {/* Absence */}
+              </td>
+              <td className="column2 yellowFLexCenter">
+                {data && dataManpowerTotal.Absence}
+              </td>
+              <td className="column3 orange">
+                <div className="persent z-20">
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.Absence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa}  loader
+                     `}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.Absence) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem] ">
+              <td className="column1 green">
+                {t("hr.Maternity_Leave")}
+                {/* Maternity Leave */}
+              </td>
+              <td className="column2 yellowFLexCenter text-center">
+                {data && dataManpowerTotal.MaternityLeave}
+              </td>
+              <td className="column3 orange">
+                <div className="persent z-20">
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.MaternityLeave) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    width: `${(
+                      (Number(dataManpowerTotal.MaternityLeave) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="column1 green">
+                {t("hr.Accident_Month")}
+                {/* Accident Month */}
+              </td>
+              <td className="column2 yellowFLexCenter text-center">
+                {data && dataManpowerTotal.Accident_Month}
+              </td>
+              <td className="column3 orange">
+                <div className={`persent  z-20`}>
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.Accident_Month) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.Accident_Month) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr className="text-[2.8rem]  leading-[5.8rem]">
+              <td className="column1 green">
+                {t("hr.Accident_Year")}
+                {/* Accident Year */}
+              </td>
+              <td className="column2 yellowFLexCenter text-center">
+                {data && dataManpowerTotal.AccidentYear}
+              </td>
+              <td className="column3 orange">
+                <div className="persent z-20">
+                  {(dataManpowerTotal.ExpectedAttendence === 0
+                    ? 0
+                    : (Number(dataManpowerTotal.AccidentYear) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                  ).toFixed(2)}
+                  %
+                </div>
+                <div
+                  className={`${classNa} loader`}
+                  style={{
+                    background: "#397CB4",
+                    transition: "width 3s ease",
+                    width: `${(
+                      (Number(dataManpowerTotal.AccidentYear) /
+                        Number(dataManpowerTotal.ExpectedAttendence)) *
+                      100
+                    ).toFixed(2)}%`,
+                  }}
+                >
+                  &emsp;
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <img
         src={hinhnen}
         alt=""
@@ -82,7 +387,7 @@ function HR() {
           height: "100%",
           width: "100%",
           position: "absolute",
-          marginTop: "40px",
+          marginTop: "-20px",
         }}
       />
       <div
@@ -113,14 +418,15 @@ function HR() {
           >
             <span
               style={{
-                fontSize: "70px",
+                fontSize: "48px",
                 color: "white",
                 fontWeight: "bold",
                 textAlign: "center",
-                marginTop: "-10px",
+                marginTop: " 40px",
+                marginBottom: "40px",
               }}
             >
-              {t('hr.title')}
+              {t("hr.title")}
             </span>
           </div>
         </div>
@@ -132,18 +438,19 @@ function HR() {
             zIndex: 9,
             opacity: 0.7,
             marginBottom: "10px",
+            marginTop: "50px",
           }}
         >
-          <div style={{ display: "flex", width: "70%", gap: 50 }}>
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("D")}>
+          <div style={{ display: "flex", width: "70%", gap: 88 }}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("D")}>
               <CardBuilding items={data && data?.ManBuildingD} />
             </div>
 
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("R2")}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("R2")}>
               <CardBuilding items={data && data?.ManBuildingR2} />
             </div>
 
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("R1")}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("R1")}>
               <CardBuilding items={data && data?.ManBuildingR1} />
             </div>
           </div>
@@ -161,26 +468,27 @@ function HR() {
           <div
             style={{
               display: "flex",
-              gap: 50,
+              gap: 88,
               flex: 1,
               paddingRight: "50px",
               marginBottom: "10px",
+              marginTop: "100px",
             }}
           >
             <div style={{ flex: 0.75 }}></div>
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("C")}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("C")}>
               <CardBuilding items={data && data?.ManBuildingC} />
             </div>
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("B")}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("B")}>
               <CardBuilding items={data && data?.ManBuildingB} />
             </div>
-            <div style={{ flex: 1 }} onClick={() => openModalBuilding("A")}>
+            <div style={{ flex: 1.5 }} onClick={() => openModalBuilding("A")}>
               <CardBuilding items={data && data?.ManBuildingA} />
             </div>
           </div>
         </div>
 
-        <div style={{ flex: 2.5, display: "flex" }}>
+        {/* <div style={{ flex: 2.5, display: "flex" }} className="mt-16">
           <div style={{ flex: 1, display: "flex" }}>
             <div
               style={{
@@ -189,236 +497,7 @@ function HR() {
                 justifyContent: "center",
                 alignItems: "flex-start",
               }}
-            >
-              <table className="table-left  border-separate border-spacing-x-1.5 border-spacing-y-0.5">
-                <tbody>
-                  <tr>
-                    <td className="w-3/12 column1 green">
-                    {t('hr.Expected_Attendence')}
-                      {/* Expected Attendence */}
-                    </td>
-                    <td className="w-2/12 column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.ExpectedAttendence}
-                    </td>
-                    <td className="w-7/12 column3 orange  ">
-                      <div className="persent ">
-                        {(Number(data?.ManpowerTotal?.ExpectedAttendence) /
-                          Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.ExpectedAttendence) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                    {t('hr.Actual_Attendence')}
-
-                      {/* Actual Attendence */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.ActualAttendence}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.ActualAttendence) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.ActualAttendence) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                    {t('hr.Leave_Factory')}
-
-                      {/* Leave Factory */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.LeaveFactory}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.LeaveFactory) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.LeaveFactory) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                    {t('hr.Absence')}
-
-                      {/* Absence */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.Absence}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.Absence) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.Absence) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                      {t('hr.Maternity_Leave')}
-                      {/* Maternity Leave */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.MaternityLeave}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.MaternityLeave) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.MaternityLeave) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                      {t('hr.Accident_Month')}
-                      {/* Accident Month */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.Accident_Month}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.Accident_Month) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.Accident_Month) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td className="column1 green">
-                      {t('hr.Accident_Year')}
-                      {/* Accident Year */}
-                    </td>
-                    <td className="column2 yellowFLex">
-                      {data && data?.ManpowerTotal?.AccidentYear}
-                    </td>
-                    <td className="column3 orange">
-                      <div className="persent ">
-                        {(
-                          (Number(data?.ManpowerTotal?.AccidentYear) /
-                            Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                          100
-                        ).toFixed(2)}
-                        %
-                      </div>
-                      <div
-                        style={{
-                          background: "#397CB4",
-                          width: `${(
-                            (Number(data?.ManpowerTotal?.AccidentYear) /
-                              Number(data?.ManpowerTotal?.ExpectedAttendence)) *
-                            100
-                          ).toFixed(2)}%`,
-                        }}
-                      >
-                        &emsp;
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            ></div>
 
             <div
               style={{
@@ -430,43 +509,43 @@ function HR() {
                 gap: "20px",
               }}
             >
-              <table className="table-right border-separate">
+              <table className="table-right border-separate ">
                 <thead>
-                  <tr>
+                  <tr className="text-xl">
                     <td
                       colSpan={2}
                       className="orange grey text-center font-bold"
                     >
-                      {t('hr.Last_Months')}
-                      {/* Last Months */}
+                      {t("hr.Last_Months")}
+                     
                     </td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className="text-xl font-bold">
                     <td className="w-1/2 green grey">
-                      {t('hr.Expected_Attendence')}
-                      {/* Expected Attendence */}
+                      {t("hr.Expected_Attendence")}
+                      
                     </td>
                     <td className="pr-2 w-1/2 yellowFLex grey">
                       {data && data?.LastMonth?.ExpectedAttendence}
                     </td>
                   </tr>
 
-                  <tr>
+                  <tr className="text-xl font-bold">
                     <td className="w-1/2 green grey">
-                      {t('hr.Turnover_Rate')}
-                      {/* Turnover Rate */}
+                      {t("hr.Turnover_Rate")}
+                     
                     </td>
                     <td className="pr-2 w-1/2 yellowFLex grey">
                       {data && data?.LastMonth?.TurnoverRate}
                     </td>
                   </tr>
 
-                  <tr>
+                  <tr className="text-xl font-bold">
                     <td className="w-1/2 green grey">
-                      {t('hr.Maternity_Leave')}
-                      {/* Maternity Leave */}
+                      {t("hr.Maternity_Leave")}
+                    
                     </td>
                     <td className="pr-2 w-1/2 yellowFLex grey">
                       {data && data?.LastMonth?.MaternityLeave}
@@ -475,23 +554,23 @@ function HR() {
                 </tbody>
               </table>
 
-              <table className="table-right col  border-separate">
+              <table className="table-right col font-bold border-separate">
                 <thead>
-                  <tr>
+                  <tr className="text-xl">
                     <td
                       colSpan={2}
                       className="orange grey  text-center font-bold"
                     >
-                      {t('hr.Over_Time_Today')}
-                      {/* Over Time Today */}
+                      {t("hr.Over_Time_Today")}
+                     
                     </td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className="text-xl">
                     <td className="green grey w-1/2">
-                    {t('hr.Quantity')}
-                      {/* Quantity */}
+                      {t("hr.Quantity")}
+                      
                     </td>
                     <td className="pr-2 yellowFLex grey w-1/2">
                       {data && data?.OverTime?.Qty_Overtime}
@@ -501,27 +580,28 @@ function HR() {
               </table>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
 
 const CardBuilding = ({ items }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
-      <div className="flexDuy">
-        <div className="blue content-left" style={{ textAlign: "center" }}>
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
+        <div className="blue content-left " style={{ textAlign: "center" }}>
           {" "}
-          {items && items?.Name}{t('hr.building')} 
+          {items && items?.Name}
+          {t("hr.building")}
         </div>
       </div>
 
-      <div className="flexDuy">
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
         <div className="blue content-left">
-          {t('hr.Expected_Attendence')}
+          {t("hr.Expected_Attendence")}
           {/* Expected Attendence */}
         </div>
         <div className="yellowFLex content-left">
@@ -529,9 +609,9 @@ const CardBuilding = ({ items }) => {
         </div>
       </div>
 
-      <div className="flexDuy">
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
         <div className="blue content-left">
-          {t('hr.Leave_Factory')}
+          {t("hr.Leave_Factory")}
           {/* Leave Factory */}
         </div>
         <div className="yellowFLex content-left">
@@ -539,17 +619,17 @@ const CardBuilding = ({ items }) => {
         </div>
       </div>
 
-      <div className="flexDuy">
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
         <div className="blue content-left">
-        {t('hr.Absence')}
+          {t("hr.Absence")}
           {/* Absence */}
         </div>
         <div className="yellowFLex content-left">{items && items?.Absence}</div>
       </div>
 
-      <div className="flexDuy">
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
         <div className="blue content-left">
-          {t('hr.Maternity_Leave')}
+          {t("hr.Maternity_Leave")}
           {/* Maternity Leave */}
         </div>
         <div className="yellowFLex content-left">
@@ -557,9 +637,9 @@ const CardBuilding = ({ items }) => {
         </div>
       </div>
 
-      <div className="flexDuy">
+      <div className="flexDuy text-[2.3rem] leading-10 font-bold">
         <div className="blue content-left">
-          {t('hr.Accident')}
+          {t("hr.Accident")}
           {/* Accident */}
         </div>
         <div className="yellowFLex content-left">

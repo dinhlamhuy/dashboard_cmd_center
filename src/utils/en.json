@@ -47,7 +47,7 @@
         "Total": "Total"
     },
     "quality_kpi_total": {
-        "title": "Quality KPI Total",
+        "title": "Quality KPI Total 2024",
         "ID": "ID",
         "Year": "Year",
         "Factory": "Factory",
@@ -66,10 +66,16 @@
         "Dec": "Dec",
         "Total": "Total"
     },
-    "data_quality": {
-        "title": "Data Quality",
+    "availability_KPI": {
+        "title": "Availability KPI",
         "Item": "Item",
-        "Months": "Months",
+        "Total_Qty": "Total Qty",
+        "Achieved": "Achieved",
+        "Efficiency_Target1": "Efficiency",
+        "Efficiency_Target2": "Target",
+        "Efficiency_Actual1": "Efficiency",
+        "Efficiency_Actual2": "Actual",
+        "Month": "Month",
         "Jan": "JAN",
         "Feb": "Feb",
         "Mar": "Mar",
@@ -83,5 +89,37 @@
         "Nov": "Nov",
         "Dec": "Dec",
         "Total": "Total"
+    },
+    "StockFittingQuality": {
+        "title": "Stock Fitting Quality",
+        "Lean": "Lean",
+        "ShoeName": "ShoeName",
+        "StopLine": "StopLine"
+    },
+    "ShippingShedule": {
+        "title": "Shipping Shedule",
+        "ShipDate": "ShipDate",
+        "PO": "PO",
+        "Ship_Qty": "Ship<br />Qty",
+        "UnScan_Qty": "UnScan<br />Qty",
+        "Wait_Inspect": "Wait<br />Inspect",
+        "Total": "Total",
+        "RY": "RY",
+        "Qty": "Qty",
+        "Scan_Qty": "Scan<br />Qty",
+        "UnScan": "UnScan",
+        "Article": "Article",
+        "Shoe_Name": "Shoe Name",
+        "Lean": "Lean",
+        "CRD": "CRD",
+        "SDD": "SDD",
+        "Country": "Country"
+    },
+    "CS3_TRIAL_SCHEDULE":{
+        "title": "CS3 TRIAL SCHEDULE",
+        "Season_Start":"Season Start",
+        "Year_Start":"Year Start",
+        "Season_End":"Season End",
+        "Year_End":"Year End"
     }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import axios from "axios";
@@ -8,9 +9,10 @@ import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
 import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
 import { DB_Route } from "../../utils/DB_Route";
+import LY_logo from "../../assets/image/LY_logo.png";
 import bgImg from "../../assets/image/background.jpg";
 
-const HomeScreen4x4 = () => {
+const HomeScreen = () => {
   const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
   const [ClickScreen, setClickScreen] = useState("");
@@ -148,7 +150,6 @@ const HomeScreen4x4 = () => {
       await axios
         .post(BaseAPIScreen + "/dashboard/getlistscreen")
         .then((response) => {
-          // console.log(response.data.data);
           setList(response.data.data.data);
         })
         .catch(() => {});
@@ -167,94 +168,107 @@ const HomeScreen4x4 = () => {
     };
   }, [socket]);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [renderedItems, setRenderedItems] = useState([]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < list.length) {
-        setRenderedItems(prevItems => [...prevItems, list[currentIndex]]);
-        console.log(list)
-        setCurrentIndex(prevIndex => prevIndex + 1);
-      } else {
-        clearInterval(interval);
-      }
-    }, 3000); // Chạy mỗi item sau mỗi 10 giây
-
-    return () => clearInterval(interval);
-  }, [currentIndex, list]);
-
-
-
   return (
     <>
-      <MenuBar isActive={"s4x4"}>
-        <div className="w-screen h-screen  bg-gray-900 grid p-0 m-0 grid-cols-4 gap-1 relative   ">
-          {renderedItems &&
-            renderedItems.map((item, index) => {
-              const Component = DB_Route[item.DB_url];
-              const url = item.DB_url;
-              // let so=0;
-              const rowIndex = Math.floor(index / 4) + 1;
-              const colIndex = index % 4;
+      <MenuBar isActive={"home"}>
+        <div className="w-screen h-screen   px-10 pb-22 overflow-hidden bg-gray-400 ">
+          <div className="w-full text-center pb-3 ">
+            <div className="pt-6">
+              <img src={LY_logo} className=" h-[120px] " />
+            </div>
+            <div className="absolute top-0 left-2 w-full">
+              <h1 className="text-black font-bold tracking-[1.1em]  text-[100px]">
+                戰情中心
+              </h1>
+            </div>
+          </div>
+          <div className="w-full h-[94%] bg-gray-900 grid p-0 m-0 grid-cols-4 gap-1 relative   ">
+            {list &&
+              list.slice(0, 9).map((item, index) => {
+                const Component = DB_Route[item.DB_url];
+                const url = item.DB_url;
+                // let so=0;
+                const rowIndex = Math.floor(index / 3) + 1;
+                const colIndex = index % 3;
 
-              if (!Component) {
-                // Xử lý trường hợp nếu không tìm thấy component
+                if (!Component) {
+                  // Xử lý trường hợp nếu không tìm thấy component
+                  if (index === 1) {
+                    return (
+                      <div
+                        key={"screen" + index}
+                        style={{
+                          left: `calc(${colIndex} / 3 * 100%)`,
+                          top: `calc(${rowIndex - 1} / 3 * 100%)`,
+                        }}
+                        className={`h-1/3 absolute w-1/3   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
+                      >
+                        {/* {item.DB_name} */}
+
+                        <iframe
+                          src="http://192.168.30.100:5173/eip/manager"
+                          width="100%"
+                          height="100%"
+                          title="W3Schools Free Online Web Tutorials"
+                        ></iframe>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        key={"screen" + index}
+                        style={{
+                          left: `calc(${colIndex} / 3 * 100%)`,
+                          top: `calc(${rowIndex - 1} / 3 * 100%)`,
+                        }}
+                        className={`h-1/3 absolute w-1/3   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
+                      >
+                        {/* {item.DB_name} */}
+
+                        <iframe
+                          src="http://192.168.32.96:8196"
+                          width="100%"
+                          height="100%"
+                          title="W3Schools Free Online Web Tutorials"
+                        ></iframe>
+                      </div>
+                    );
+                  }
+                }
 
                 return (
                   <div
+                
+                    key={"screen" + index}
                     style={{
-                      left: `calc(${colIndex} / 4 * 100%)`,
-                      top: `calc(${rowIndex - 1} / 4 * 100%)`,
+                      left: `calc(${colIndex} / 3 * 100%)`,
+                      top: `calc(${rowIndex - 1} / 3 * 100%)`,
+                      background: `url(${bgImg})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "100%",
                     }}
-                    key={index}
-                    className={`h-1/4 absolute w-1/4   text-yellow-800 font-bold justify-center items-center bg-gray-800 flex`}
+                    className={` border border-4 border-gray-400 h-1/3 w-1/3  absolute px-0  overflow-hidden`}
                   >
-                    {/* {item.DB_name} */}
-
-                    {/* <iframe src="http://192.168.30.19/Dashboard/#/production" width="100%" height="100%" title="W3Schools Free Online Web Tutorials">
-</iframe> */}
+                    <button
+                      onClick={() => navigateToDetail('screen/'+Number(index+1))}
+                      className={`  overflow-auto  font-bold rounded-lg`}
+                      key={"frame" + index}
+                    >
+                      <div
+                        className={`   
+              text-xl select-none text-ellipsis   w-full h-full flex justify-center items-center p-0 m-0 `}
+                      >
+                        <Component />
+                      </div>
+                    </button>
                   </div>
                 );
-              }
-              
-              return (
-                <div
-                  key={"frame2" + index}
-                  style={{
-                    left: `calc(${colIndex} / 4 * 100%)`,
-                    top: `calc(${rowIndex - 1} / 4 * 100%)`,
-                    background: `url(${bgImg})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "100%",
-                  }}
-                  className={`  border-2 border-black h-1/4 w-1/4 bg-gray-950 absolute px-0  overflow-hidden`}
-                >
-                  <button
-                    onClick={() => navigateToDetail(url)}
-                    className={`  overflow-auto  font-bold rounded-lg`}
-                    key={"frame" + index}
-                  >
-                    <div
-                      style={{
-                        transform: "scale(0.15)",
-                        transformOrigin: "0 0",
-                        minWidth: "165vw",
-                        minHeight: "110vh",
-                      }}
-                      className={`  
-              text-xl select-none text-ellipsis   w-full h-full p-0 m-0 `}
-                    >
-                      <Component />
-                    </div>
-                  </button>
-                </div>
-              );
-            })}
+              })}
+          </div>
         </div>
       </MenuBar>
     </>
   );
 };
 
-export default HomeScreen4x4;
+export default HomeScreen;

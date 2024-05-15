@@ -1,0 +1,310 @@
+#containerHO {
+  /* background-image: url(../image/Go_1366_30.png); */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+#titleHO {
+  font-size: 4rem;
+  text-align: center;
+  /* color:white; */
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  background: linear-gradient(45deg, blue, VIOLET, #58a219);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.HOicon {
+  width: 100%;
+  min-height: 90vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+
+}
+
+.ComponentHO {
+  position: relative;
+  width: 15.5rem;
+  height: 11.5rem;
+
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.tempure-value-on {
+  position: absolute;
+  font-size: 1.5rem;
+  right: -1.25rem;
+  top: -1rem;
+  font-weight: bold;
+  color: #fff;
+
+}
+
+.tempure-value-off {
+  position: absolute;
+  font-size: 1.5rem;
+  right: -1.25rem;
+  top: -1rem;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0;
+
+}
+
+.iconDroplet {
+  position: absolute;
+  font-size: 12rem;
+  font-weight: bolder;
+  left: 20px;
+  top: 0;
+  z-index: 1;
+
+}
+
+.iconTemperature {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 6rem;
+  fill: gray;
+  z-index: 3;
+}
+
+.iconTemperature-safe {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 6rem;
+  fill: #2196f3;
+  z-index: 3;
+}
+
+.iconTemperature-normal {
+  fill: #b7d607;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 6rem;
+  z-index: 3;
+}
+
+.iconTemperature-high {
+  fill: #e77f08;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 6rem;
+  z-index: 3;
+}
+
+.iconTempureOff {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  font-size: 6rem;
+  fill: #d1530a;
+  z-index: 3;
+}
+
+.percentHO {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 50%;
+  left: 32%;
+  z-index: 2;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+
+}
+
+.circlewhite {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: #000000;
+  border-radius: 50%;
+  top: 20%;
+  right: 17.5%;
+  z-index: 1;
+}
+
+.content-detail-HO {
+
+  margin-top: 0;
+  text-align: center;
+  color: lightgrey;
+
+  font-size: 1.25rem;
+
+}
+
+.pos-humidity {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  background: linear-gradient(45deg, #00a8cc, #ffffff, #48a219);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ItemHO {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+
+  height: fit-content;
+}
+
+.wave-safe {
+  position: absolute;
+  height: 8.5rem;
+  width: 8rem;
+  box-shadow: inset 0 0 50px #000;
+  text-decoration: none;
+  font-size: 18px;
+  top: 33px;
+  left: 50px;
+  color: grey;
+  overflow: hidden;
+  border-radius: 52% 48% 50% 50% / 62% 62% 38% 38%;
+  background: #2196f3;
+  filter: drop-shadow(0 -2.5rem 1.5rem #2196f3);
+
+}
+
+.wave-normal {
+  position: absolute;
+  height: 8.5rem;
+  width: 8rem;
+  box-shadow: inset 0 0 50px #000;
+  text-decoration: none;
+  font-size: 18px;
+  top: 33px;
+  left: 50px;
+  color: grey;
+  overflow: hidden;
+  border-radius: 52% 48% 50% 50% / 62% 62% 38% 38%;
+  background: #b7d607;
+
+}
+
+.wave-high {
+  position: absolute;
+  height: 8.5rem;
+  width: 8rem;
+  box-shadow: inset 0 0 50px #000;
+  text-decoration: none;
+  font-size: 18px;
+  top: 33px;
+  left: 50px;
+  color: grey;
+  overflow: hidden;
+  border-radius: 52% 48% 50% 50% / 62% 62% 38% 38%;
+  background: #e77f08;
+  filter: drop-shadow(0 0 5rem #e77f08);
+
+  animation: colorChange 3s infinite alternate;
+}
+
+.iconDroplet {
+  color: gray;
+}
+
+.iconDroplet-safe {
+  color: #4d78b9;
+}
+
+.iconDroplet-normal {
+  color: #a09d04;
+}
+
+.iconDroplet-high {
+  color: #a05602;
+}
+
+.wave1 {
+  content: "";
+  position: absolute;
+  right: -30px;
+  width: 150%;
+  height: 150%;
+  border-radius: 40%;
+  background: #201f1fd9;
+  opacity: 0.7;
+  animation: animate 10s linear infinite;
+}
+
+.wave2 {
+  content: "";
+  position: absolute;
+  right: -30px;
+  width: 150%;
+  height: 150%;
+  border-radius: 40%;
+  background: #343131cb;
+  opacity: 0.7;
+  animation: animate2 5s linear infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    filter: drop-shadow(0px -2.5rem 1.5rem #dd2c00);
+  }
+
+  25% {
+    filter: drop-shadow(0px -2.5rem 1.5rem #f50057);
+  }
+
+  50% {
+    filter: drop-shadow(0px -2.5rem 1.5rem #ffab00);
+  }
+
+  100% {
+    filter: drop-shadow(0px -2.5rem 1.5rem #e77f08);
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.khung {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+
+}

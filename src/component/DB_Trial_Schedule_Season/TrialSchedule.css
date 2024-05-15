@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#container-trial-schedule {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Arial";
+  overflow: auto;
+}
+#title-trial-schedule {
+  color: rgb(255, 255, 255);
+}
+#title-trial-schedule > p {
+  text-align: center;
+  /* font-size: 2vw; */
+}
+#title-trial-schedule > ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#title-trial-schedule > ul > li {
+  list-style-type: none;
+  /* padding: 0.8vw; */
+  /* font-size: 0.9vw; */
+}
+#table-trial-schedule {
+  color: #ffffff; 
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Sontable {
+  /* border-collapse: collapse; */
+  border-color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.title-table-trial-schedule th {
+  /* padding: 0.1vw; */
+  /* font-size: 1vw; */
+  /* font-size: 18px; */
+}
+.green-text-trial-schedule {
+  background-color: #58a219;
+}
+.blue-text-trial-schedule {
+  background-color: #00a8cc;
+}
+
+#body-content-trial-schedule {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.td-image-trial-schedule {
+  width: 8vw;
+  text-align: center;
+}
+.td-image-trial-schedule img {
+  width: 70%;
+  object-fit: cover;
+  height: auto;
+}
+.td-image-trial-schedule p {
+  /* font-size: 0.8em; */
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(45deg, #00a8cc, #ffffff, #58a219);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* .td-text-trial-schedule {
+  font-size: clamp(0.6rem, 2.5vw, 1.3rem);
+} */
+.Sontable tr {
+  background-color: rgb(30, 114, 195, 0.3);
+  margin-bottom: 10px;
+}
+.text-hop-column-trial-schedule {
+  color: rgb(209, 120, 83);
+}
+.flip-image {
+  animation: scaleAnimation 2.5s infinite;
+}
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

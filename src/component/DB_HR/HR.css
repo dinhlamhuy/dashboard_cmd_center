@@ -1,7 +1,7 @@
 .hinhnen {
     display: flex;
     justify-content: center;
-    
+
     width: 100%;
     height: 100%;
     /* background-image: url('../../assets/image/Go_1366_30.png'); */
@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     gap: 3px;
+    /* z-index: ; */
 }
 
 .content-left {
@@ -21,7 +22,7 @@
 }
 
 .blue {
-    color: rgb(152, 201, 221);
+    color: rgb(43, 189, 247);
     flex: 1;
     margin-bottom: 3px;
 }
@@ -31,6 +32,14 @@
     flex: 1;
     margin-bottom: 3px;
     text-align: right;
+}
+
+.yellowFLexCenter {
+    color: yellow;
+    flex: 1;
+    margin-bottom: 3px;
+    text-align: center;
+    /* font-size: 1.8rem; */
 }
 
 .green {
@@ -54,15 +63,16 @@
 }
 
 .table-left tbody tr td {
-    background: #1C3D4F;
-    opacity: 0.8;
+    background: #172126f8;
+    /* opacity: 0.8; */
     padding: 3px;
 }
+
 .table-detail {
     width: 99%;
     z-index: 1;
     font-size: 15px;
-    
+
     justify-content: center;
 }
 .table-detail tbody tr td {
@@ -70,19 +80,6 @@
     opacity: 0.8;
     padding: 3px;
 }
-/* .column1 {
-    width: 30%;
-}
-
-.column2 {
-    width: 10%;
-}
-
-.column3 {
-    width: 60%;
-    text-align: center;
-    position: relative;
-} */
 .column3 {
     text-align: center;
     position: relative;
@@ -92,34 +89,77 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    color:rgb(190, 246, 6)
+    color: rgb(190, 246, 6)
 }
-
 .table-right {
     width: 80%;
     z-index: 1;
     font-size: 15px;
 }
-
-
-
 @media (min-width: 870px) and (max-width: 1024px) {
     .ReactModal__Content {
-      width: 60% !important;
-      max-width: 50% !important; 
+        width: 60% !important;
+        max-width: 50% !important;
     }
-  }
-  
-  @media (max-width: 869px) {
+}
+@media (max-width: 869px) {
     .ReactModal__Content {
-      width: 90% !important;
-      max-width: 85% !important;  
-
+        width: 90% !important;
+        max-width: 85% !important;
     }
-  }
+}
 
-
- .ReactModal__Overlay, .ReactModal__Overlay ReactModal__Overlay--after-open {
+.ReactModal__Overlay,
+.ReactModal__Overlay ReactModal__Overlay--after-open {
     position: absolute !important;
-    z-index:99 !important;
- } 
+    z-index: 99 !important;
+}
+@keyframes growWidth {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+.element {
+    width: 0%;
+    transition: width 3s ease;
+}
+.element2 {
+    width: 0% !important;
+    /* animation: growWidth 5s ease infinite; */
+
+    transition: width 1s ease;
+}
+.loader {
+    z-index: 10;
+    position: relative;
+    background: #fff;
+    -webkit-box-reffect: below 1px gradient(transparent, #0005);
+}
+
+.loader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #0000ff, #7068e3, #0000ff, #7068e3, #0000ff, #7068e3, #0000ff, #7068e3);
+    animation: animate 30s linear infinite;
+    background-size: 500%;
+    filter: blur(5px);
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0
+    }
+
+    0% {
+        background-position: 500% 0
+    }
+
+
+}

@@ -53,9 +53,14 @@ const OneScreen = () => {
         <div  style={{
         background: `url(${bgImg})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
+        backgroundSize: "100%", backgroundColor:'black',
+
+        transform:'scale(0.6)',
+        transformOrigin: '0 0',
+        width:'167vw',
+        height:'168vh' 
       }}
-          className={` bg-black box-border flex-none  h-screen w-screen`}>
+          className={` bg-black box-border flex-none  h-screen w-screen overflow-hidden`}>
          {
             Component && ( <Component />)
          }

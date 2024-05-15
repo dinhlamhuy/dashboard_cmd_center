@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
-import logo from "../../assets/image/logo.png";
+// import logo from "../../assets/image/logo.png";
+import logo from "../../assets/image/LY_logo.png";
 import { PiSwapFill  } from "react-icons/pi";
 import { LuMonitorDot } from "react-icons/lu";
 import { IoHomeOutline } from "react-icons/io5";
@@ -13,9 +14,10 @@ import { PiMonitor } from "react-icons/pi";
 import "./index.css";
 import { useTranslation } from "react-i18next";
 import { LuLanguages } from "react-icons/lu";
-import { changeLanguage } from "i18next";
+import { TfiLayoutGrid4Alt } from "react-icons/tfi";
+// import { changeLanguage } from "i18next";
 const MenuBar = ({ children, isActive }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const DefautLng = localStorage.getItem("languages");
   const [lng, setLng] = useState(DefautLng === null ? "EN" : DefautLng);
   const onChangeLanguage = (lng) => {
@@ -54,7 +56,7 @@ const MenuBar = ({ children, isActive }) => {
         <span className={`${i >= 10 ? "-ml-4" : "-ml-3.5"}  text-[8px] mt-1`}>
           {i}
         </span>
-        &emsp;&emsp; Màn hình {i}
+        &emsp;&emsp; Screen {i}
       </li>
     );
   }
@@ -68,9 +70,9 @@ const MenuBar = ({ children, isActive }) => {
             setIsOpenSlide(newIsOpenSlide);
             localStorage.setItem("isOpen", newIsOpenSlide.toString());
           }}
-          className=" "
+          className=" pl-3 pt-2"
         >
-          <img src={logo} width={45} style={{ opacity: "0.5" }} />
+          <img src={logo} width={100} style={{ opacity: "1" }} />
         </button>
       </div>
       <aside
@@ -102,7 +104,7 @@ const MenuBar = ({ children, isActive }) => {
                 <span
                   className={`  text-white pr-2 flex-1 ms-3 whitespace-nowrap `}
                 >
-                  Màn hình chính
+                  Home
                 </span>
               </button>
             </li>
@@ -119,7 +121,41 @@ const MenuBar = ({ children, isActive }) => {
                 <span
                   className={` text-white  pr-2 flex-1 ms-3 whitespace-nowrap `}
                 >
-                  Sắp xếp
+                  Screen Menu 3x3
+                </span>
+              </button>
+            </li>
+            <li
+              onClick={() => handleUrl("/4x4", "s4x4")}
+              className={`${
+                isActive === "s4x4"
+                  ? "activeMenuDark"
+                  : "  hover:text-white hover:bg-gray-800  "
+              } cursor-pointer `}
+            >
+              <button className=" flex items-center p-2 rounded-lg  group">
+                <TfiLayoutGrid4Alt className={`text-2xl text-white font-bold `} />
+                <span
+                  className={` text-white  pr-2 flex-1 ms-3 whitespace-nowrap `}
+                >
+                  Dashboard 4x4
+                </span>
+              </button>
+            </li>
+            <li
+              onClick={() => handleUrl("/menu4x4", "m4x4")}
+              className={`${
+                isActive === "m4x4"
+                  ? "activeMenuDark"
+                  : "  hover:text-white hover:bg-gray-800  "
+              } cursor-pointer `}
+            >
+              <button className=" flex items-center p-2 rounded-lg  group">
+                <PiSwapFill    className={`text-2xl text-white font-bold `} />
+                <span
+                  className={` text-white  pr-2 flex-1 ms-3 whitespace-nowrap `}
+                >
+                  Screen Menu 4x4
                 </span>
               </button>
             </li>
@@ -139,7 +175,7 @@ const MenuBar = ({ children, isActive }) => {
                 <span
                   className={`   text-white w-full pr-2 flex justify-between ms-3 whitespace-nowrap `}
                 >
-                  <span className=" ">Màn hình</span>
+                  <span className=" ">Screens</span>
                   {isOpenScreen ? (
                     <IoIosArrowUp className="text-2xl" />
                   ) : (
@@ -173,7 +209,7 @@ const MenuBar = ({ children, isActive }) => {
                 <span
                   className={`   text-white w-full pr-2 flex justify-between ms-3 whitespace-nowrap `}
                 >
-                  <span className=" ">Ngôn ngữ</span>
+                  <span className=" ">Language</span>
                   {isOpenlng ? (
                     <IoIosArrowUp className="text-2xl" />
                   ) : (
@@ -196,7 +232,7 @@ const MenuBar = ({ children, isActive }) => {
                         : "  hover:text-white hover:bg-gray-800  "
                     }   flex cursor-pointer hover:bg-gray-700 p-3`}
                   >
-                    &emsp;&emsp; ENGLISH
+                    &emsp;&emsp; English
                   </li>
                   <li
                     key={"tw"}
@@ -207,7 +243,7 @@ const MenuBar = ({ children, isActive }) => {
                         : "  hover:text-white hover:bg-gray-800  "
                     }   flex cursor-pointer hover:bg-gray-700 p-3`}
                   >
-                    &emsp;&emsp; TAIWAN
+                    &emsp;&emsp; Taiwan
                   </li>
                 </ul>
               </div>

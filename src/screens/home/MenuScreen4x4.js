@@ -7,7 +7,7 @@ import socketIOClient from "socket.io-client";
 import MenuBar from "../../component/MenuBar";
 import ModalScreens from "../../component/ModalScreens";
 import { BaseAPIScreen, HostSocket } from "../../utils/baseApi";
-const MenuScreen = () => {
+const MenuScreen4x4 = () => {
   // const navigate = useNavigate();
   const [socket, setSocket] = useState(null);
   const socketRef = useRef();
@@ -269,10 +269,10 @@ const MenuScreen = () => {
 
   return (
     <>
-      <MenuBar isActive={"menu"}>
-        <div className="w-full relative h-screen bg-gray-900 grid p-0 m-0 grid-cols-3 gap-3  ">
+      <MenuBar isActive={"m4x4"}>
+        <div className="w-full relative h-screen bg-gray-900 grid p-0 m-0 grid-cols-4 gap-3 ">
           {list &&
-            list.slice(0,9).map((item, index) => {
+            list.map((item, index) => {
               return (
                 <button
                   onClick={() => ChooseScreen(index, item)}
@@ -286,7 +286,7 @@ const MenuScreen = () => {
                         ? "ring-4 ring-fuchsia-950 shadow-2xl-ring-offset-4 bg-red-800 text-white"
                         : " backdrop-blur-md bg-gray-950 text-yellow-400 "
                     } 
-              text-xl  select-none absolute left-0 top-0 w-full h-full flex justify-center text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400     items-center `}
+              text-xl  select-none absolute left-0 top-0 w-full h-full flex justify-center  text-ellipsis overflow-hidden rounded-lg border-dashed  border-2 border-orange-400     items-center `}
                   >
                     {item.DB_name}
                   </div>
@@ -296,7 +296,7 @@ const MenuScreen = () => {
         </div>
       </MenuBar>
       <ModalScreens isOpen={openModal}>
-        <div className="flex justify-end p-2 ">
+        <div className="flex justify-end p-2">
           <button
             className="text-2xl rounded-full bg-gray-200 px-2.5 "
             onClick={closeModalScreen}
@@ -304,11 +304,11 @@ const MenuScreen = () => {
             X
           </button>
         </div>
-        <div className="flex -mt-5 justify-center items-center text-white text-3xl font-bold ">
+        <div className="flex -mt-5 justify-center items-center text-white text-3xl font-bold">
           Màn hình số {chooseScreen}
         </div>
         <div className="    px-2 h-80">
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 relative h-56   pb-20 overflow-y-auto">
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 relative h-96 pb-14 overflow-y-auto">
             {listComponent &&
               listComponent.map((item, index) => {
                 if (item.Screen_id !== null) {
@@ -370,7 +370,7 @@ const MenuScreen = () => {
               })}
           </div>
         </div>
-        <div className="absolute w-full bg-black bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center p-3 ">
+        <div className=" absolute w-full bg-black bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center p-3 ">
           <button
             onClick={() => addCompontAtScreen("choose")}
             className="bg-blue-600 mx-2 px-4 py-2 rounded-xl text-lg font-bold text-white"
@@ -397,4 +397,4 @@ const MenuScreen = () => {
   );
 };
 
-export default MenuScreen;
+export default MenuScreen4x4;

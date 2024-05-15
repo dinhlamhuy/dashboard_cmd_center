@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body{
+  background-color: black;
+}
 
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 3px;
     border-radius:24px;
+    height: 3px;
+    
   }
-  
+  ::-webkit-scrollbar-track-piece {
+    background-color: black;
+}
   /* Track */
   ::-webkit-scrollbar-track {
     background: #181717; 
@@ -22,4 +29,7 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #a50707; 
+  }
+  .needle-animation {
+    transition: transform 0.5s ease-in-out;
   }

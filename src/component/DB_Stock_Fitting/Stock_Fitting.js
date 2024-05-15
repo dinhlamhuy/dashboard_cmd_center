@@ -16,14 +16,14 @@ const Stock_Fitting = () => {
       .catch(() => {});
   };
   useEffect(() => {
-    getAPIcheck();
+    // getAPIcheck();
   }, []);
   return (
     <>
       <div className="h-screen">
       <p className="text-center text-white text-5xl font-bold py-4">Stock Fitting  {currentDate}</p>
       <div className="px-3 mt-2">
-        <table className="table table-fixed flex justify-start  w-full border-separate border-spacing-y-1">
+        <table className="table table-fixed  justify-start  w-full border-separate border-spacing-y-1">
           <thead>
             <tr className="backdrop-brightness-125 bg-blue-950/20">
               <th className="text-sm text-blue-300 w-8 ">Line</th>

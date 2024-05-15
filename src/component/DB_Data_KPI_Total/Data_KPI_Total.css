@@ -35,8 +35,8 @@
 }
 
 .title {
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: bold;
     color: white;
     margin-bottom: 10px;
 }
@@ -58,7 +58,7 @@
     border: 2px solid black;
 }
 
-.Data_KPI_Total_table tbody th {
+.Data_KPI_Total_table tbody td {
     border: 2px solid black;
 }
 
@@ -66,9 +66,9 @@
     padding: 0px;
 }
 
-.Data_KPI_Total_table tbody td {
-    border-bottom: 2px solid transparent;
-}
+/* .Data_KPI_Total_table tbody td {
+    border-bottom: 1px solid transparent;
+} */
 
 
 .hang {
@@ -87,6 +87,6 @@
     color: yellow;
 }
 
-.blue {
+/* .blue {
     color: #21A8EC;
-}
+} */

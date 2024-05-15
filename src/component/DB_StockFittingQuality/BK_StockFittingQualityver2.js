@@ -441,7 +441,7 @@ const StockFittingQuality = () => {
   };
   useEffect(() => {
     // console.log('check ban đầu')
-    getAPIcheck();
+    // getAPIcheck();
 
     // const data = listData.sort((a, b) => {
     //   // Use localeCompare for string comparison to ensure correct sorting order

@@ -16,7 +16,7 @@ const Data_Product_Type = () => {
       .catch(() => {});
   };
   useEffect(() => {
-    getAPIcheck();
+    // getAPIcheck();
   }, []);
   return (
     <>

@@ -1,0 +1,104 @@
+.CR_title {
+    color: white;
+    text-align: center;
+    font-size: 4.2rem;
+    font-weight: bold;
+   
+}
+.CR_FrameImg{
+    height: 15rem;
+    width: 100%;
+    /* border:1px solid rgb(255, 255, 255); */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+/* .CR_imgShoes {
+    width: 95%;
+    display: flex;
+  justify-content: center;
+    margin-top: 2rem;
+    transform: rotate(-30deg);
+    transform: rotate(0deg);
+    animation: upDownImg 3s infinite alternate;
+
+} */
+.CR_imgShoes {
+    width: 0%;
+    display: flex;
+  justify-content: center;
+    margin-top: 2rem;
+    transform: rotate(-30deg);
+    /* transform: rotate(0deg); */
+    animation: upDownImg2 1.5s ease-in forwards;
+    /* animation: upDownImg 3s infinite; */
+
+}
+
+
+@keyframes upDownImg2 {
+    0% {
+        transform: rotate(0deg) translateY(0);
+        width: 0%;
+    }
+    100% {
+        transform: rotate(-30deg) translateY(0);
+        width: 100%;
+    }
+}
+@keyframes upDownImg {
+    0% {
+        transform: rotate(-30deg) translateY(0);
+        /* width: 95%; */
+    }
+    50% {
+        transform: rotate(-30deg) translateY(-10px);
+        /* width: 100%; */
+    }
+    100% {
+        transform: rotate(-30deg) translateY(0);
+        /* width: 95%; */
+    }
+}
+.CR_titleShoes {
+    color: rgb(162, 169, 227);
+    text-align: center;
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.CR_detailShoes {
+    margin-top: -2.4rem;
+    padding-top: 4rem;
+    color: white;
+    text-align: center;
+    background-color: rgba(47, 47, 233, 0.441);
+    border-radius: 24px;
+    height: 80vh;
+}
+
+.CR_detail1 {
+    font-size: 3rem;
+}
+
+.CR_detail2 > p:first-child,
+.CR_detail3 > p:first-child,
+.CR_detail4 > p:first-child {
+    color: yellow;
+    padding-top: 20px;
+    text-align: left;
+    padding-left: 20px;
+    /* padding-bottom: px; */
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+.CR_detail2 > p:nth-child(2),
+.CR_detail3 > p:nth-child(2),
+.CR_detail4 > p:nth-child(2) {
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2rem;
+    /* font-weight: 200; */
+}

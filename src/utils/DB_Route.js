@@ -1,21 +1,33 @@
 /* eslint-disable import/no-anonymous-default-export */
-import CompScreen from "../screens/CompScreen";
-import HourlyOutPutByFloor from "../component/DB_HourlyOutPutByFloor/HourlyOutPutByFloor";
-import StockFittingQuality from "../component/DB_StockFittingQuality/StockFittingQuality";
-
+import { lazy } from 'react';
 import { Route } from "react-router-dom";
-import HR from "../component/DB_HR/HR";
-import Data_KPI_Total from "../component/DB_Data_KPI_Total/Data_KPI_Total";
-import AssemblyQuality from "../component/DB_AssemblyQuality/AssemblyQuality";
-import Trial_Schedule_Season from "../component/DB_Trial_Schedule_Season/Trial_Schedule_Season";
-import Availability_KPI from "../component/DB_Availability_KPI/Availability_KPI";
-import Stock_Fitting from "../component/DB_Stock_Fitting/Stock_Fitting";
-import Data_Product_Type from "../component/DB_Data_Product_Type/Data_Product_Type";
-import Data_Quality from "../component/DB_Data_Quality/Data_Quality";
-import StockFittingQuality_China from "../component/DB_StockFittingQuality/StockFittingQuality_VerChina";
-import StockFittingQuality_VerEn from "../component/DB_StockFittingQuality/StockFittingQuanlity_VerEn";
-import Shipping_Shedule from "../component/DB_Shipping_Shedule/Shipping_Shedule";
-import HourlyOutPutByModel from "../component/DB_HourlyOutPutByModel/HourlyOutPutByModel";
+import HumidityOverview from '../component/DB_HumidityOverview/HumidityOverview';
+import Human_Resource from '../component/DB_HR_New/Human_Resource';
+import Critical_Model from '../component/DB_Critical_Model/Critical_Model';
+
+
+
+// import CompScreen from "../screens/CompScreen";
+const CompScreen = lazy(()=> import("../screens/CompScreen"));
+const StockFittingQuality = lazy(()=> import("../component/DB_StockFittingQuality/StockFittingQuality"));
+const Data_KPI_Total = lazy(()=> import("../component/DB_Data_KPI_Total/Data_KPI_Total"));
+const HR = lazy(()=> import("../component/DB_HR/HR"));
+const AssemblyQuality = lazy(()=> import("../component/DB_AssemblyQuality/AssemblyQuality"));
+const Trial_Schedule_Season = lazy(()=> import("../component/DB_Trial_Schedule_Season/TrialSchedule"));
+const Availability_KPI = lazy(()=> import("../component/DB_Availability_KPI/Availability_KPI"));
+const Shipping_Shedule = lazy(()=> import("../component/DB_Shipping_Shedule/Shipping_Shedule"));
+const HourlyOutPutByModel = lazy(()=> import("../component/DB_HourlyOutPutByModel/HourlyOutPutByModel"));
+const HourlyOutPutByFloor = lazy(()=> import("../component/DB_HourlyOutPutByFloor/HourlyOutPutByFloor"));
+const StockFittingQuality_VerEn = lazy(()=> import("../component/DB_StockFittingQuality/StockFittingQuanlity_VerEn"));
+const Stock_Fitting = lazy(()=>import("../component/DB_Stock_Fitting/Stock_Fitting"));
+const Data_Quality = lazy(()=> import("../component/DB_Data_Quality/Data_Quality"));
+const Data_Product_Type = lazy(()=> import("../component/DB_Data_Product_Type/Data_Product_Type"));
+const StockFittingQuality_China = lazy(()=> import("../component/DB_StockFittingQuality/StockFittingQuality_VerChina"));
+
+
+
+
+
 export const DB_Route = {
   HourlyOutPutByFloor,
   StockFittingQuality,
@@ -30,8 +42,12 @@ export const DB_Route = {
   StockFittingQuality_China,
   StockFittingQuality_VerEn,
   Shipping_Shedule,
-  HourlyOutPutByModel
+  HourlyOutPutByModel,
+  HumidityOverview,
+  Human_Resource,
+  Critical_Model
 };
+
 
 export const DB_Routers = () => {
   return (

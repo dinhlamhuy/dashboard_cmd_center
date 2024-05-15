@@ -13,10 +13,10 @@ const Data_Quality = () => {
   };
   useEffect(() => {
     // console.log('check ban đầu')
-    getAPIcheck();
+    // getAPIcheck();
   }, []);
   return (
-    <div clasName="relative h-screen bg-black px-2  ">
+    <div className="relative h-screen bg-black px-2  ">
       <div className="text-white text-6xl text-center font-bold  ">
         DATA QUANLITY 2024
       </div>

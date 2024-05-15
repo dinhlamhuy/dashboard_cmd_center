@@ -505,7 +505,7 @@ const StockFittingQuality = () => {
   };
   useEffect(() => {
     // console.log('check ban đầu')
-    getAPIcheck();
+    // getAPIcheck();
   }, []);
   useEffect(() => {
     const data = listData.sort((a, b) => {
